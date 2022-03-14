@@ -16,12 +16,16 @@
         return false;
     }
     // one liner
-    function areThereDuplicates() {
+    function areThereDuplicates2() {
         return new Set(arguments).size !== arguments.length;
     }  
     // Multiple Pointers
-    function areThereDuplicates(...args) {
+    function areThereDuplicates3(...args) {
      // do
     }
     areThereDuplicates(1, 2, 3) // false
     areThereDuplicates(1, 2, 2) // true
+    areThereDuplicates2(1, 2, 3) // false
+    areThereDuplicates2(1, 2, 2) // true
+    areThereDuplicates3(1, 2, 3) // false
+    areThereDuplicates3(1, 2, 2) // true

@@ -10,20 +10,22 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import NotificationsIcon from '@mui/icons-material/Notifications';
+import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-
-import 'ace-builds/css/theme/monokai.css';
-
+import { Master } from '../class/master.ts';
+// import firebase from 'firebase';
+// import "firebase/firebase-firestore";
+// import 'ace-builds/css/theme/monokai.css';
+const  TableSchema = {fileList :'fileList'}
+ const master = new Master('EcnmB1tYRxvHj1mFWOsH')
 function Copyright(props: any) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -45,7 +47,7 @@ interface AppBarProps extends MuiAppBarProps {
 
 const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
-    })<AppBarProps>(({ theme, open }) => ({
+})<AppBarProps>(({ theme, open }) => ({
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
         easing: theme.transitions.easing.sharp,
@@ -90,17 +92,38 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const mdTheme = createTheme(
     {
         palette: {
-        mode: 'dark',
-      },
+            mode: 'dark',
+        },
     }
 );
 
 function DashboardContent() {
+    React.useEffect(() => {
+        // master.getById(TableSchema.fileList,'EcnmB1tYRxvHj1mFWOsH').then(d => {
+        //     console.log('d',d.docs)
+        //     const data = d.docs
+        //         .map((doc: firebase.firestore.DocumentSnapshot) => {
+        //             console.log('doc.id',doc.id)
+        //             return { id: doc.id, ...doc.data() }
+        //         });
+        //     console.log({ data: data })
+        // })
+    }, [master]);
     const [open, setOpen] = React.useState(true);
+    const [codeRun, setCodeRun] = React.useState(`function onLoad(editor) { return "i've loaded"; } onLoad()`);
+    const [codeOutput, setCodeOutput] = React.useState(`// output`);
     const toggleDrawer = () => {
         setOpen(!open);
     };
-
+    const run = () => {
+        const output = eval(codeRun);
+        console.log('codeRun', codeRun)
+        console.log(output, codeOutput)
+        setCodeOutput(output);
+    }
+    const codeEditorChange = e => {
+        setCodeRun(e);
+    };
     return (
         <ThemeProvider theme={mdTheme}>
             <Box sx={{ display: 'flex' }}>
@@ -133,9 +156,7 @@ function DashboardContent() {
                             Dashboard
                         </Typography>
                         <IconButton color="inherit">
-                            <Badge badgeContent={4} color="secondary">
-                                <NotificationsIcon />
-                            </Badge>
+                            <PlayArrowOutlinedIcon onClick={run} />
                         </IconButton>
                     </Toolbar>
                 </AppBar>
@@ -154,13 +175,13 @@ function DashboardContent() {
                     </Toolbar>
                     <Divider />
                     <List component="nav">
-                            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
                             <ListItem button key={text}>
                                 <ListItemIcon>
                                 </ListItemIcon>
                                 <ListItemText primary={text} />
                             </ListItem>
-                            ))}
+                        ))}
                         <Divider sx={{ my: 1 }} />
                     </List>
                 </Drawer>
@@ -175,13 +196,13 @@ function DashboardContent() {
                         height: '100vh',
                         overflow: 'auto',
                     }}
-                    
+
                 >
                     <Toolbar />
                     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
                         <Grid container spacing={3}>
-                            {/* Chart */}
-                            <Grid item xs={12} md={12} lg={12}>
+                            {/* Editor */}
+                            <Grid item xs={12} md={8} lg={8}>
                                 <Paper
                                     sx={{
                                         p: 2,
@@ -199,20 +220,55 @@ function DashboardContent() {
                                         mode="javascript"
                                         theme="monokai"
                                         name="blah2"
+                                        onChange={codeEditorChange}
+                                        onLoad={run}
+                                        fontSize={14}
+                                        showPrintMargin={true}
+                                        showGutter={true}
+                                        highlightActiveLine={true}
+                                        value={codeRun}
+                                        setOptions={{
+                                            enableBasicAutocompletion: true,
+                                            enableLiveAutocompletion: true,
+                                            enableSnippets: true,
+                                            showLineNumbers: true,
+                                            tabSize: 3,
+                                        }} />
+                                </Paper>
+                            </Grid>
+                            <Grid item xs={12} md={4} lg={4}>
+                                <Paper
+                                    sx={{
+                                        p: 2,
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        height: 440,
+                                    }}
+                                >
+                                    <AceEditor
+                                        className="ace-monokai"
+                                        width="100%"
+                                        height="100%"
+                                        wrapEnabled={true}
+                                        placeholder="Placeholder Text"
+                                        mode="javascript"
+                                        theme="monokai"
+                                        name="blah2"
+                                        readOnly={true}
                                         // onLoad={console.log}
                                         // onChange={console.log}
                                         fontSize={14}
                                         showPrintMargin={true}
                                         showGutter={true}
                                         highlightActiveLine={true}
-                                        value={`function onLoad(editor) { console.log("i've loaded"); }`}
+                                        value={codeOutput}
                                         setOptions={{
-                                                enableBasicAutocompletion: true,
-                                                enableLiveAutocompletion: true,
-                                                enableSnippets: true,
-                                                showLineNumbers: true,
-                                                tabSize: 3,
-                                            }}/>
+                                            enableBasicAutocompletion: true,
+                                            enableLiveAutocompletion: true,
+                                            enableSnippets: true,
+                                            showLineNumbers: true,
+                                            tabSize: 3,
+                                        }} />
                                 </Paper>
                             </Grid>
                         </Grid>
