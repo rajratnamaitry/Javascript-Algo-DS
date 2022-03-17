@@ -1,13 +1,14 @@
-import { firbaseDbConnection } from "./fireBaseStore.ts";
+import { firbaseDbConnection } from "./fireBaseStore";
 import firebase from "firebase";
 import "firebase/firebase-firestore";
 
 export class Master extends firbaseDbConnection {
-    dbConnection: any;
+    dbConnection : any;
 
     // eslint-disable-next-line @typescript-eslint/no-useless-constructor
     constructor(_parameters: any) {
-        super(_parameters)
+        super(_parameters)        
+       this.dbConnection = firebase.firestore();
     }
     collections(collectionName: string): firebase.firestore.CollectionReference{
         return this.dbConnection.collection(collectionName)

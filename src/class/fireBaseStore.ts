@@ -1,4 +1,4 @@
-import firebase from "../../src/firebase.js"
+import firebase from "../firebase.js"
 import "firebase/firebase-firestore" 
 
 export class firbaseDbConnection {
@@ -6,5 +6,6 @@ export class firbaseDbConnection {
     constructor(doc:string) {
        this.dbConnection = firebase.firestore().collection('fileList')
         .doc(doc);
+        console.log(doc,this.dbConnection)
     }
 }
