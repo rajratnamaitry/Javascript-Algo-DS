@@ -1,4 +1,4 @@
-import firebase from "../../src/firebase.js"
+import firebase from "../firebase.js"
 import "firebase/firebase-firestore" 
 
 export class firbaseDbConnection {
