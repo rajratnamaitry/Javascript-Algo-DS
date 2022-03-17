@@ -1,5 +1,4 @@
 import * as React from 'react';
-import AceEditor from 'react-ace';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
@@ -20,10 +19,19 @@ import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { Master } from '../class/master.ts';
-// import firebase from 'firebase';
-// import "firebase/firebase-firestore";
-// import 'ace-builds/css/theme/monokai.css';
+import { Master } from '../class/master';
+import AceEditor from 'react-ace';
+import 'ace-builds/src-noconflict/mode-javascript'
+import "ace-builds/src-noconflict/theme-monokai";
+import "ace-builds/src-noconflict/ext-language_tools"
+import {
+    Accordion,
+    AccordionSummary,
+    Fab,
+    AccordionDetails
+  } from '@mui/material'
+  import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+
 const  TableSchema = {fileList :'fileList'}
  const master = new Master('EcnmB1tYRxvHj1mFWOsH')
 function Copyright(props: any) {
@@ -96,34 +104,60 @@ const mdTheme = createTheme(
         },
     }
 );
-
+type IfileList = {
+    codeProgram: string,
+    description: string,
+    question?:string,
+    name: string
+}
 function DashboardContent() {
-    React.useEffect(() => {
-        // master.getById(TableSchema.fileList,'EcnmB1tYRxvHj1mFWOsH').then(d => {
-        //     console.log('d',d.docs)
-        //     const data = d.docs
-        //         .map((doc: firebase.firestore.DocumentSnapshot) => {
-        //             console.log('doc.id',doc.id)
-        //             return { id: doc.id, ...doc.data() }
-        //         });
-        //     console.log({ data: data })
-        // })
-    }, [master]);
     const [open, setOpen] = React.useState(true);
-    const [codeRun, setCodeRun] = React.useState(`function onLoad(editor) { return "i've loaded"; } onLoad()`);
+    const [question, setQuestion] = React.useState<string | undefined>('');
+    const [fileList, setFileList] = React.useState([{
+        codeProgram: '',
+        description: '',
+        question: '',
+        name: ''
+    }]);
+    const [codeRun, setCodeRun] = React.useState(``);
     const [codeOutput, setCodeOutput] = React.useState(`// output`);
+    React.useEffect(() => {
+        master.get(TableSchema.fileList).then(d => {
+            const data = d.docs
+                .map((doc: any) => {
+                    console.log('doc.id',doc.id)
+                    return { id: doc.id, ...doc.data() }
+                });
+                setFileList(data)
+        })
+    }, [master]);
     const toggleDrawer = () => {
         setOpen(!open);
     };
-    const run = () => {
+    const runFn = () => {
         const output = eval(codeRun);
         console.log('codeRun', codeRun)
         console.log(output, codeOutput)
         setCodeOutput(output);
     }
-    const codeEditorChange = e => {
+    const codeEditorChange = (e:string) => {
         setCodeRun(e);
     };
+    const [expanded, setExpanded] = React.useState<string | false>(false)
+    const [formState, setFormState] = React.useState({
+        codeProgram: '',
+        description: '',
+        question: '',
+        name: ''
+    });
+    const handleChange = (isExpanded: boolean, panel: string) => {
+      setExpanded(isExpanded ? panel : false)
+    }
+    const handleSubmit = (event:any) => {
+        alert('A name was submitted: ');
+        setFormState
+        event.preventDefault();
+    }
     return (
         <ThemeProvider theme={mdTheme}>
             <Box sx={{ display: 'flex' }}>
@@ -153,11 +187,8 @@ function DashboardContent() {
                             noWrap
                             sx={{ flexGrow: 1 }}
                         >
-                            Dashboard
+                            Algorithm & Data Structures
                         </Typography>
-                        <IconButton color="inherit">
-                            <PlayArrowOutlinedIcon onClick={run} />
-                        </IconButton>
                     </Toolbar>
                 </AppBar>
                 <Drawer variant="permanent" open={open}>
@@ -175,11 +206,14 @@ function DashboardContent() {
                     </Toolbar>
                     <Divider />
                     <List component="nav">
-                        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                            <ListItem button key={text}>
+                        {fileList.map((text:IfileList, index) => (
+                            <ListItem button key={text.name} onClick={(e)=>{
+                                setCodeRun(text.codeProgram)
+                                setQuestion(text.question)
+                            }}>
                                 <ListItemIcon>
                                 </ListItemIcon>
-                                <ListItemText primary={text} />
+                                <ListItemText primary={text.name} />
                             </ListItem>
                         ))}
                         <Divider sx={{ my: 1 }} />
@@ -196,37 +230,91 @@ function DashboardContent() {
                         height: '100vh',
                         overflow: 'auto',
                     }}
-
                 >
                     <Toolbar />
                     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-                        <Grid container spacing={3}>
-                            {/* Editor */}
-                            <Grid item xs={12} md={8} lg={8}>
+                        <form onSubmit={handleSubmit}>
+                            <label>
+                                question:
+                                  <input type="text" value={formState.question} />
+                                codeProgram:
                                 <Paper
                                     sx={{
                                         p: 2,
                                         display: 'flex',
                                         flexDirection: 'column',
-                                        height: 440,
+                                        height: 300,
                                     }}
                                 >
-                                    <AceEditor
-                                        className="ace-monokai"
+                                <AceEditor                                       
                                         width="100%"
                                         height="100%"
                                         wrapEnabled={true}
                                         placeholder="Placeholder Text"
                                         mode="javascript"
                                         theme="monokai"
-                                        name="blah2"
-                                        onChange={codeEditorChange}
-                                        onLoad={run}
+                                        name="blah16"
                                         fontSize={14}
-                                        showPrintMargin={true}
+                                        showPrintMargin={false}
                                         showGutter={true}
                                         highlightActiveLine={true}
-                                        value={codeRun}
+                                        value={formState.codeProgram}
+                                        setOptions={{
+                                            enableBasicAutocompletion: true,
+                                            enableLiveAutocompletion: true,
+                                            enableSnippets: true,
+                                            showLineNumbers: true,
+                                            tabSize: 3,
+                                        }} />
+                                     </Paper>   
+                                name:
+                                  <input type="text" value={formState.name} />
+                            </label>
+                            <input type="submit" value="Submit" />
+                        </form>
+                        <Grid container spacing={3}>
+                            {/* Editor */}
+                            <Accordion
+                                expanded={true}
+                                onChange={(event, isExpanded) => handleChange(isExpanded, 'panel1')}>
+                                <AccordionSummary
+                                aria-controls='panel1-content'
+                                id='panel1-header'
+                                >
+                                <Typography> Editor </Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                <Typography>
+                                    {question}
+                                </Typography>
+                                <Grid item xs={12} md={12} lg={12}>
+                                <Paper
+                                    sx={{
+                                        p: 2,
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        width:899,
+                                        height: 440,
+                                    }}
+                                >
+                                    <AceEditor                                       
+                                        width="100%"
+                                        height="100%"
+                                        wrapEnabled={true}
+                                        placeholder="Placeholder Text"
+                                        mode="javascript"
+                                        theme="monokai"
+                                        name="blah1"
+                                        onChange={codeEditorChange}
+                                        onLoad={runFn}
+                                        fontSize={14}
+                                        showPrintMargin={false}
+                                        showGutter={true}
+                                        highlightActiveLine={true}
+                                        value={`function onLoad(editor) { 
+                                            return "i've loaded"
+                                        };
+                                        onLoad()`}
                                         setOptions={{
                                             enableBasicAutocompletion: true,
                                             enableLiveAutocompletion: true,
@@ -236,31 +324,34 @@ function DashboardContent() {
                                         }} />
                                 </Paper>
                             </Grid>
-                            <Grid item xs={12} md={4} lg={4}>
+                            <Fab color="primary" size="small" onClick={runFn}>
+                                <PlayArrowOutlinedIcon/>
+                            </Fab >
+                            <Grid item xs={12} md={12} lg={12}>
                                 <Paper
                                     sx={{
                                         p: 2,
                                         display: 'flex',
                                         flexDirection: 'column',
-                                        height: 440,
+                                        height: 100,
                                     }}
                                 >
+                                    <Typography>Output</Typography>
                                     <AceEditor
-                                        className="ace-monokai"
                                         width="100%"
                                         height="100%"
                                         wrapEnabled={true}
                                         placeholder="Placeholder Text"
-                                        mode="javascript"
-                                        theme="monokai"
+                                        mode="java"
+                                        theme="github"
                                         name="blah2"
                                         readOnly={true}
                                         // onLoad={console.log}
                                         // onChange={console.log}
-                                        fontSize={14}
-                                        showPrintMargin={true}
+                                        fontSize={10}
+                                        showPrintMargin={false}
                                         showGutter={true}
-                                        highlightActiveLine={true}
+                                        highlightActiveLine={false}
                                         value={codeOutput}
                                         setOptions={{
                                             enableBasicAutocompletion: true,
@@ -271,6 +362,55 @@ function DashboardContent() {
                                         }} />
                                 </Paper>
                             </Grid>
+                                </AccordionDetails>
+                            </Accordion>                           
+                            <Accordion
+                                expanded={expanded === 'panel3'}
+                                onChange={(event, isExpanded) => handleChange(isExpanded, 'panel3')}>
+                                <AccordionSummary
+                                aria-controls='panel3-content'
+                                id='panel3-header'
+                                expandIcon={<ExpandMoreIcon />}>
+                                <Typography> Solutions </Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                <Typography>
+                                <Grid item xs={12} md={12} lg={12}>
+                                <Paper
+                                    sx={{
+                                        p: 2,
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        width:899,
+                                        height: 440,
+                                    }}
+                                >
+                                   <AceEditor                                       
+                                        width="100%"
+                                        height="100%"
+                                        wrapEnabled={true}
+                                        placeholder="Placeholder Text"
+                                        mode="javascript"
+                                        theme="monokai"
+                                        name="blah3"
+                                        fontSize={14}
+                                        readOnly={true}
+                                        showPrintMargin={false}
+                                        showGutter={true}
+                                        highlightActiveLine={true}
+                                        value={codeRun}
+                                        setOptions={{
+                                            enableBasicAutocompletion: true,
+                                            enableLiveAutocompletion: true,
+                                            enableSnippets: true,
+                                            showLineNumbers: true,
+                                            tabSize: 3,
+                                        }} />
+                                        </Paper>
+                                        </Grid>
+                                </Typography>
+                                </AccordionDetails>
+                            </Accordion>
                         </Grid>
                         <Copyright sx={{ pt: 4 }} />
                     </Container>
