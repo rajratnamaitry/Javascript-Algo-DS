@@ -95,4 +95,10 @@
   .ace-monokai .ace_comment {
   color: #75715E
   }
- 
+ .MuiDrawer-root{
+  overflow: auto;
+  height: 580px;
+ }
+ .css-qklaqr-MuiListItemIcon-root{
+  min-width: 0px !important;
+ }
