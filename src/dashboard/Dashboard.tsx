@@ -29,11 +29,10 @@ import {
     AccordionSummary,
     Fab,
     AccordionDetails
-  } from '@mui/material'
-  import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-
-const  TableSchema = {fileList :'fileList'}
- const master = new Master('EcnmB1tYRxvHj1mFWOsH')
+} from '@mui/material'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+const TableSchema = { fileList: 'fileList' }
+const master = new Master('EcnmB1tYRxvHj1mFWOsH')
 function Copyright(props: any) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -105,11 +104,13 @@ const mdTheme = createTheme(
     }
 );
 type IfileList = {
-    codeProgram: string,
-    description: string,
-    question?:string,
+    url?: string | undefined,
+    codeProgram?: string,
+    description?: string,
+    question?: string,
     name: string
 }
+
 function DashboardContent() {
     const [open, setOpen] = React.useState(true);
     const [question, setQuestion] = React.useState<string | undefined>('');
@@ -125,10 +126,10 @@ function DashboardContent() {
         master.get(TableSchema.fileList).then(d => {
             const data = d.docs
                 .map((doc: any) => {
-                    console.log('doc.id',doc.id)
+                    console.log('doc.id', doc.id)
                     return { id: doc.id, ...doc.data() }
                 });
-                setFileList(data)
+            setFileList(data)
         })
     }, [master]);
     const toggleDrawer = () => {
@@ -140,7 +141,23 @@ function DashboardContent() {
         console.log(output, codeOutput)
         setCodeOutput(output);
     }
-    const codeEditorChange = (e:string) => {
+    const getFileContent = (url: any) => {
+        fetch('./algo/'+url, {
+            mode: 'no-cors', 
+            headers: {
+                'content-type': 'text/html'
+            }
+        })
+        .then(e=>{
+            console.log('type',e.type)
+           return e.text()
+        })
+        .then(e => {
+            console.log('text', e);
+            setCodeRun(e)
+        }).catch(console.log);
+    }
+    const codeEditorChange = (e: string) => {
         setCodeRun(e);
     };
     const [expanded, setExpanded] = React.useState<string | false>(false)
@@ -151,9 +168,9 @@ function DashboardContent() {
         name: ''
     });
     const handleChange = (isExpanded: boolean, panel: string) => {
-      setExpanded(isExpanded ? panel : false)
+        setExpanded(isExpanded ? panel : false)
     }
-    const handleSubmit = (event:any) => {
+    const handleSubmit = (event: any) => {
         alert('A name was submitted: ');
         setFormState
         event.preventDefault();
@@ -206,14 +223,14 @@ function DashboardContent() {
                     </Toolbar>
                     <Divider />
                     <List component="nav">
-                        {fileList.map((text:IfileList, index) => (
-                            <ListItem button key={text.name} onClick={(e)=>{
-                                setCodeRun(text.codeProgram)
-                                setQuestion(text.question)
+                        {fileList.map((el: IfileList, index) => (
+                            <ListItem button key={el.name} onClick={(e) => {
+                                getFileContent(el.name);
+                                setQuestion(el.question)
                             }}>
                                 <ListItemIcon>
                                 </ListItemIcon>
-                                <ListItemText primary={text.name} />
+                                <ListItemText primary={el.name} />
                             </ListItem>
                         ))}
                         <Divider sx={{ my: 1 }} />
@@ -233,182 +250,145 @@ function DashboardContent() {
                 >
                     <Toolbar />
                     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-                        <form onSubmit={handleSubmit}>
-                            <label>
-                                question:
-                                  <input type="text" value={formState.question} />
-                                codeProgram:
-                                <Paper
-                                    sx={{
-                                        p: 2,
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        height: 300,
-                                    }}
-                                >
-                                <AceEditor                                       
-                                        width="100%"
-                                        height="100%"
-                                        wrapEnabled={true}
-                                        placeholder="Placeholder Text"
-                                        mode="javascript"
-                                        theme="monokai"
-                                        name="blah16"
-                                        fontSize={14}
-                                        showPrintMargin={false}
-                                        showGutter={true}
-                                        highlightActiveLine={true}
-                                        value={formState.codeProgram}
-                                        setOptions={{
-                                            enableBasicAutocompletion: true,
-                                            enableLiveAutocompletion: true,
-                                            enableSnippets: true,
-                                            showLineNumbers: true,
-                                            tabSize: 3,
-                                        }} />
-                                     </Paper>   
-                                name:
-                                  <input type="text" value={formState.name} />
-                            </label>
-                            <input type="submit" value="Submit" />
-                        </form>
                         <Grid container spacing={3}>
                             {/* Editor */}
                             <Accordion
                                 expanded={true}
                                 onChange={(event, isExpanded) => handleChange(isExpanded, 'panel1')}>
                                 <AccordionSummary
-                                aria-controls='panel1-content'
-                                id='panel1-header'
+                                    aria-controls='panel1-content'
+                                    id='panel1-header'
                                 >
-                                <Typography> Editor </Typography>
+                                    <Typography> Editor </Typography>
                                 </AccordionSummary>
                                 <AccordionDetails>
-                                <Typography>
-                                    {question}
-                                </Typography>
-                                <Grid item xs={12} md={12} lg={12}>
-                                <Paper
-                                    sx={{
-                                        p: 2,
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        width:899,
-                                        height: 440,
-                                    }}
-                                >
-                                    <AceEditor                                       
-                                        width="100%"
-                                        height="100%"
-                                        wrapEnabled={true}
-                                        placeholder="Placeholder Text"
-                                        mode="javascript"
-                                        theme="monokai"
-                                        name="blah1"
-                                        onChange={codeEditorChange}
-                                        onLoad={runFn}
-                                        fontSize={14}
-                                        showPrintMargin={false}
-                                        showGutter={true}
-                                        highlightActiveLine={true}
-                                        value={`function onLoad(editor) { 
+                                    <Typography>
+                                        {question}
+                                    </Typography>
+                                    // Editor
+                                    <Grid item xs={12} md={12} lg={12}>
+                                        <Paper
+                                            sx={{
+                                                p: 2,
+                                                display: 'flex',
+                                                flexDirection: 'column',
+                                                width: 899,
+                                                height: 440,
+                                            }}
+                                        >
+                                            <AceEditor
+                                                width="100%"
+                                                height="100%"
+                                                wrapEnabled={true}
+                                                placeholder="Placeholder Text"
+                                                mode="javascript"
+                                                theme="monokai"
+                                                name="blah1"
+                                                onChange={codeEditorChange}
+                                                onLoad={runFn}
+                                                fontSize={14}
+                                                showPrintMargin={false}
+                                                showGutter={true}
+                                                highlightActiveLine={true}
+                                                value={`function onLoad(editor) { 
                                             return "i've loaded"
                                         };
                                         onLoad()`}
-                                        setOptions={{
-                                            enableBasicAutocompletion: true,
-                                            enableLiveAutocompletion: true,
-                                            enableSnippets: true,
-                                            showLineNumbers: true,
-                                            tabSize: 3,
-                                        }} />
-                                </Paper>
-                            </Grid>
-                            <Fab color="primary" size="small" onClick={runFn}>
-                                <PlayArrowOutlinedIcon/>
-                            </Fab >
-                            <Grid item xs={12} md={12} lg={12}>
-                                <Paper
-                                    sx={{
-                                        p: 2,
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        height: 100,
-                                    }}
-                                >
-                                    <Typography>Output</Typography>
-                                    <AceEditor
-                                        width="100%"
-                                        height="100%"
-                                        wrapEnabled={true}
-                                        placeholder="Placeholder Text"
-                                        mode="java"
-                                        theme="github"
-                                        name="blah2"
-                                        readOnly={true}
-                                        // onLoad={console.log}
-                                        // onChange={console.log}
-                                        fontSize={10}
-                                        showPrintMargin={false}
-                                        showGutter={true}
-                                        highlightActiveLine={false}
-                                        value={codeOutput}
-                                        setOptions={{
-                                            enableBasicAutocompletion: true,
-                                            enableLiveAutocompletion: true,
-                                            enableSnippets: true,
-                                            showLineNumbers: true,
-                                            tabSize: 3,
-                                        }} />
-                                </Paper>
-                            </Grid>
+                                                setOptions={{
+                                                    enableBasicAutocompletion: true,
+                                                    enableLiveAutocompletion: true,
+                                                    enableSnippets: true,
+                                                    showLineNumbers: true,
+                                                    tabSize: 3,
+                                                }} />
+                                        </Paper>
+                                    </Grid>
+                                    <Fab color="primary" size="small" onClick={runFn}>
+                                        <PlayArrowOutlinedIcon />
+                                    </Fab >
+                                    // Output
+                                    <Grid item xs={12} md={12} lg={12}>
+                                        <Paper
+                                            sx={{
+                                                p: 2,
+                                                display: 'flex',
+                                                flexDirection: 'column',
+                                                height: 100,
+                                            }}
+                                        >
+                                            <Typography>Output</Typography>
+                                            <AceEditor
+                                                width="100%"
+                                                height="100%"
+                                                wrapEnabled={true}
+                                                placeholder="Placeholder Text"
+                                                mode="java"
+                                                theme="github"
+                                                name="blah2"
+                                                readOnly={true}
+                                                // onLoad={console.log}
+                                                // onChange={console.log}
+                                                fontSize={10}
+                                                showPrintMargin={false}
+                                                showGutter={true}
+                                                highlightActiveLine={false}
+                                                value={codeOutput}
+                                                setOptions={{
+                                                    enableBasicAutocompletion: true,
+                                                    enableLiveAutocompletion: true,
+                                                    enableSnippets: true,
+                                                    showLineNumbers: true,
+                                                    tabSize: 3,
+                                                }} />
+                                        </Paper>
+                                    </Grid>
                                 </AccordionDetails>
-                            </Accordion>                           
+                            </Accordion>
                             <Accordion
                                 expanded={expanded === 'panel3'}
                                 onChange={(event, isExpanded) => handleChange(isExpanded, 'panel3')}>
                                 <AccordionSummary
-                                aria-controls='panel3-content'
-                                id='panel3-header'
-                                expandIcon={<ExpandMoreIcon />}>
-                                <Typography> Solutions </Typography>
+                                    aria-controls='panel3-content'
+                                    id='panel3-header'
+                                    expandIcon={<ExpandMoreIcon />}>
+                                    <Typography> Solutions </Typography>
                                 </AccordionSummary>
                                 <AccordionDetails>
-                                <Typography>
-                                <Grid item xs={12} md={12} lg={12}>
-                                <Paper
-                                    sx={{
-                                        p: 2,
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        width:899,
-                                        height: 440,
-                                    }}
-                                >
-                                   <AceEditor                                       
-                                        width="100%"
-                                        height="100%"
-                                        wrapEnabled={true}
-                                        placeholder="Placeholder Text"
-                                        mode="javascript"
-                                        theme="monokai"
-                                        name="blah3"
-                                        fontSize={14}
-                                        readOnly={true}
-                                        showPrintMargin={false}
-                                        showGutter={true}
-                                        highlightActiveLine={true}
-                                        value={codeRun}
-                                        setOptions={{
-                                            enableBasicAutocompletion: true,
-                                            enableLiveAutocompletion: true,
-                                            enableSnippets: true,
-                                            showLineNumbers: true,
-                                            tabSize: 3,
-                                        }} />
-                                        </Paper>
+                                    <Typography>
+                                        <Grid item xs={12} md={12} lg={12}>
+                                            <Paper
+                                                sx={{
+                                                    p: 2,
+                                                    display: 'flex',
+                                                    flexDirection: 'column',
+                                                    width: 899,
+                                                    height: 440,
+                                                }}
+                                            >
+                                                <AceEditor
+                                                    width="100%"
+                                                    height="100%"
+                                                    wrapEnabled={true}
+                                                    placeholder="Placeholder Text"
+                                                    mode="javascript"
+                                                    theme="monokai"
+                                                    name="blah3"
+                                                    fontSize={14}
+                                                    readOnly={true}
+                                                    showPrintMargin={false}
+                                                    showGutter={true}
+                                                    highlightActiveLine={true}
+                                                    value={codeRun}
+                                                    setOptions={{
+                                                        enableBasicAutocompletion: true,
+                                                        enableLiveAutocompletion: true,
+                                                        enableSnippets: true,
+                                                        showLineNumbers: true,
+                                                        tabSize: 3,
+                                                    }} />
+                                            </Paper>
                                         </Grid>
-                                </Typography>
+                                    </Typography>
                                 </AccordionDetails>
                             </Accordion>
                         </Grid>
