@@ -148,14 +148,8 @@ function DashboardContent() {
                 'content-type': 'text/html'
             }
         })
-        .then(e=>{
-            console.log('type',e.type)
-           return e.text()
-        })
-        .then(e => {
-            console.log('text', e);
-            setCodeRun(e)
-        }).catch(console.log);
+        .then(e=> e.text())
+        .then(e => setCodeRun(e)).catch(console.log);
     }
     const codeEditorChange = (e: string) => {
         setCodeRun(e);
