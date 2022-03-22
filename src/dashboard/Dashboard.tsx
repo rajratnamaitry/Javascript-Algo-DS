@@ -311,9 +311,9 @@ function DashboardContent() {
                             sx={{ height: 240, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
                         >
                             {fileList.map((el, index) => (
-                                <TreeItem nodeId="1" label={el.name}>
-                                    {el.data.map((mData:any)=>
-                                     <TreeItem nodeId="2" key={mData.name} label={mData.name} onClick={(e) => {
+                                <TreeItem nodeId={index} label={el.name}>
+                                    {el.data.map((mData:any,cIndex)=>
+                                     <TreeItem nodeId={cIndex+"2"} key={mData.name} label={mData.name} onClick={(e) => {
                                         getFileContent(mData.name);
                                         setQuestion(mData.question)
                                         }} />                                        
