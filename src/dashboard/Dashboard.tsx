@@ -244,6 +244,7 @@ function DashboardContent() {
                 newList.push({ name, data: data.filter(e => e.folder == name) });
             }
             console.log(newList)
+            setExpanded('panel3');
             setFileList(newList)
         })
     }, [master]);
@@ -340,7 +341,7 @@ function DashboardContent() {
                         <Grid container spacing={3}>
                             {/* Editor */}
                             <Accordion
-                                expanded={true}
+                                expanded={expanded === 'panel1'}
                                 onChange={(event, isExpanded) => handleChange(isExpanded, 'panel1')}>
                                 <AccordionSummary
                                     aria-controls='panel1-content'
@@ -352,7 +353,6 @@ function DashboardContent() {
                                     <Typography>
                                         {question}
                                     </Typography>
-                                    // Editor
                                     <Grid item xs={12} md={12} lg={12}>
                                         <Paper
                                             sx={{
