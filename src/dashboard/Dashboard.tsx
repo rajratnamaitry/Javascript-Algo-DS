@@ -8,22 +8,21 @@ import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined';
 import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { Master } from '../class/master';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-javascript'
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/ext-language_tools"
+import TreeView from '@mui/lab/TreeView';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import TreeItem from '@mui/lab/TreeItem';
 import {
     Accordion,
     AccordionSummary,
@@ -106,6 +105,8 @@ const mdTheme = createTheme(
 type IfileList = {
     url?: string | undefined,
     codeProgram?: string,
+    folder?: string,
+    subfolder?: string,
     description?: string,
     question?: string,
     name: string
@@ -213,29 +214,39 @@ type IfileList = {
 //         }).then(console.log)
 //     })
 function DashboardContent() {
-    const [open, setOpen] = React.useState(true);
     const [question, setQuestion] = React.useState<string | undefined>('');
     const [fileList, setFileList] = React.useState([{
-        codeProgram: '',
-        description: '',
-        question: '',
-        name: ''
-    }]);
+            name: "",
+            data: [{
+                url: "",
+                codeProgram: "",
+                folder: "",
+                subfolder: "",
+                description: "",
+                question: "",
+                name: ""
+            }]
+        }]);
     const [codeRun, setCodeRun] = React.useState(``);
     const [codeOutput, setCodeOutput] = React.useState(`// output`);
     React.useEffect(() => {
         master.get(TableSchema.fileList).then(d => {
             const data = d.docs
                 .map((doc: any) => {
-                    console.log('doc.id', doc.id)
                     return { id: doc.id, ...doc.data() }
-                });
-            setFileList(data)
+                })
+            const fre: any = {}
+            const newList: any = []
+            for (let ob of data) {
+                fre[ob.folder] = (fre[ob.folder] || 0) + 1;
+            }
+            for (let name in fre) {
+                newList.push({ name, data: data.filter(e => e.folder == name) });
+            }
+            console.log(newList)
+            setFileList(newList)
         })
     }, [master]);
-    const toggleDrawer = () => {
-        setOpen(!open);
-    };
     const runFn = () => {
         const output = eval(codeRun);
         console.log('codeRun', codeRun)
@@ -243,55 +254,32 @@ function DashboardContent() {
         setCodeOutput(output);
     }
     const getFileContent = (url: any) => {
-        fetch('./algo/'+url, {
-            mode: 'no-cors', 
+        fetch('./algo/' + url, {
+            mode: 'no-cors',
             headers: {
                 'content-type': 'text/html'
             }
         })
-        .then(e=> e.text())
-        .then(e => setCodeRun(e)).catch(console.log);
+            .then(e => e.text())
+            .then(e => setCodeRun(e)).catch(console.log);
     }
     const codeEditorChange = (e: string) => {
         setCodeRun(e);
     };
     const [expanded, setExpanded] = React.useState<string | false>(false)
-    const [formState, setFormState] = React.useState({
-        codeProgram: '',
-        description: '',
-        question: '',
-        name: ''
-    });
     const handleChange = (isExpanded: boolean, panel: string) => {
         setExpanded(isExpanded ? panel : false)
-    }
-    const handleSubmit = (event: any) => {
-        alert('A name was submitted: ');
-        setFormState
-        event.preventDefault();
     }
     return (
         <ThemeProvider theme={mdTheme}>
             <Box sx={{ display: 'flex' }}>
                 <CssBaseline />
-                <AppBar position="absolute" open={open}>
+                <AppBar position="absolute" open={true}>
                     <Toolbar
                         sx={{
                             pr: '24px', // keep right padding when drawer closed
                         }}
                     >
-                        <IconButton
-                            edge="start"
-                            color="inherit"
-                            aria-label="open drawer"
-                            onClick={toggleDrawer}
-                            sx={{
-                                marginRight: '36px',
-                                ...(open && { display: 'none' }),
-                            }}
-                        >
-                            <MenuIcon />
-                        </IconButton>
                         <Typography
                             component="h1"
                             variant="h6"
@@ -303,7 +291,7 @@ function DashboardContent() {
                         </Typography>
                     </Toolbar>
                 </AppBar>
-                <Drawer variant="permanent" open={open}>
+                <Drawer variant="permanent" open={true}>
                     <Toolbar
                         sx={{
                             display: 'flex',
@@ -312,22 +300,26 @@ function DashboardContent() {
                             px: [1],
                         }}
                     >
-                        <IconButton onClick={toggleDrawer}>
-                            <ChevronLeftIcon />
-                        </IconButton>
                     </Toolbar>
                     <Divider />
                     <List component="nav">
-                        {fileList.map((el: IfileList, index) => (
-                            <ListItem button key={el.name} onClick={(e) => {
-                                getFileContent(el.name);
-                                setQuestion(el.question)
-                            }}>
-                                <ListItemIcon>
-                                </ListItemIcon>
-                                <ListItemText primary={el.name} />
-                            </ListItem>
-                        ))}
+                        <TreeView
+                            aria-label="file system navigator"
+                            defaultCollapseIcon={<ExpandMoreIcon />}
+                            defaultExpandIcon={<ChevronRightIcon />}
+                            sx={{ height: 240, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
+                        >
+                            {fileList.map((el, index) => (
+                                <TreeItem nodeId="1" label={el.name}>
+                                    {el.data.map((mData:any)=>
+                                     <TreeItem nodeId="2" key={mData.name} label={mData.name} onClick={(e) => {
+                                        getFileContent(mData.name);
+                                        setQuestion(mData.question)
+                                        }} />                                        
+                                    )}
+                                </TreeItem>
+                            ))}
+                        </TreeView>
                         <Divider sx={{ my: 1 }} />
                     </List>
                 </Drawer>
