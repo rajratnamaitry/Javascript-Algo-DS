@@ -51,6 +51,17 @@
  * insertionSort(moarKittyData, oldestToYoungest); // sorted by age in descending order
  */
 // Examples
+function insertionSort(arr){
+	var currentVal;
+    for(var i = 1; i < arr.length; i++){
+        currentVal = arr[i];
+        for(var j = i - 1; j >= 0 && arr[j] > currentVal; j--) {
+            arr[j+1] = arr[j]
+        }
+        arr[j+1] = currentVal;
+    }
+    return arr;
+}
 
 insertionSort([4, 20, 12, 10, 7, 9]); // [4, 7, 9, 10, 12, 20]
 insertionSort([0, -10, 7, 4]); // [-10, 0, 4, 7]
