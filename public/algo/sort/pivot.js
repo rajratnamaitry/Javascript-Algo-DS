@@ -1,11 +1,15 @@
 /**
  * Sorting Exercise - pivot helper
  * 
- * In this exercise, your goal is to implement a function called pivot . This function contains nearly all of the logic you'll need in order to implement Quick Sort in the next exercise.
+ * In this exercise, your goal is to implement a function called pivot . This function contains nearly all of the 
+ * logic you'll need in order to implement Quick Sort in the next exercise.
  * 
- * The pivot  function is responsible for taking an array, setting the pivot value, and mutating the array so that all values less than the pivot wind up to the left of it, and all values greater than the pivot wind up to the right of it. It's also helpful if this helper returns the index of where the pivot value winds up.
+ * The pivot  function is responsible for taking an array, setting the pivot value, and mutating the array so that all 
+ * values less than the pivot wind up to the left of it, and all values greater than the pivot wind up to the right of 
+ * it. It's also helpful if this helper returns the index of where the pivot value winds up.
  * 
- * For example, if we decide the pivot will always be the first element in the array, it should behave in the following way:
+ * For example, if we decide the pivot will always be the first element in the array, it should behave in the 
+ * following way:
  * 
  * 
  * var arr = [4, 2, 5, 3, 6];
