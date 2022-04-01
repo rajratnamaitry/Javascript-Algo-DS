@@ -11,3 +11,4 @@
   res.push(string);
   return res;
 }
+console.log('captial',capitalizeFirst(['raj','ramesh', 'maitry']))
