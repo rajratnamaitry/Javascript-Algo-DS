@@ -1,7 +1,6 @@
 /**
  * collectStrings Write a function called collectStrings which accepts an object and returns an array of all 
- * the values in the object that have a typeof stringindex.js12345678910function collectStrings(obj){    var 
- * nObj = [];    
+ * the values in the object that have a typeof string
  * 
  */
  function collectStrings(obj) {
@@ -12,7 +11,7 @@
                 stringsArr.push(o[key]);
             }
             else if(typeof o[key] === 'object') {
-                return gatherStrings(o[key]);
+                 gatherStrings(o[key]);
             }
         }
     }
@@ -32,3 +31,4 @@ function collectStringsPureRecursive(obj) {
  
     return stringsArr;
 }
+console.log('collectStrings',collectStrings({ name: 'raj',data:{ call:'22' , jam: 'jam' } , phone : 'phone'}))

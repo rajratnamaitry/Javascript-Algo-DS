@@ -11,3 +11,4 @@
     
   // add whatever parameters you deem necessary - good luck!
 }
+console.log('someRecursive',someRecursive([12,43,25,20], (a)=> a > 100 ))
