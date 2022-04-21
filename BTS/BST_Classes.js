@@ -105,6 +105,36 @@ class BinarySearchTree {
         const max = Math.max(this.maxPath(root.left),this.maxPath(root.right));
         return root.val + max;
     }
+    DFSPreOrder(){
+        var data = [];
+        function traverse(node){
+            data.push(node.val);
+            if(node.left) traverse(node.left);
+            if(node.right) traverse(node.right);
+        }
+        traverse(this.root);
+        return data;
+    }
+    DFSPostOrder(){
+        var data = [];
+        function traverse(node){
+            if(node.left) traverse(node.left);
+            if(node.right) traverse(node.right);
+            data.push(node.val);
+        }
+        traverse(this.root);
+        return data;
+    }
+    DFSInOrder(){
+        var data = [];
+        function traverse(node){
+            if(node.left) traverse(node.left);
+            data.push(node.val);
+            if(node.right) traverse(node.right);
+        }
+        traverse(this.root);
+        return data;
+    }
 }
 
 //      10
@@ -127,3 +157,6 @@ console.log('treeIncludesRec',tree.treeIncludesRec(tree.root,11))
 console.log('treeSum',tree.treeSum())
 console.log('treeMinValue',tree.treeMinValue())
 console.log('maxPath',tree.maxPath())
+console.log("DFSPreOrder",tree.DFSPreOrder());
+console.log("DFSPostOrder",tree.DFSPostOrder());
+console.log("DFSInOrder",tree.DFSInOrder());
