@@ -1,6 +1,6 @@
 class Node {
     constructor(value){
-        this.value = value;
+        this.val = value;
         this.left = null;
         this.right = null;
     }
@@ -10,10 +10,120 @@ class BinarySearchTree {
     constructor(){
         this.root = null;
     }
+    insert(val){
+        const newNode = new Node(val);
+        if(!this.root){
+            this.root = newNode;
+            return this;
+        }
+        let current = this.root;
+        while(true){
+            if(current.val > val){
+                if(current.left ==null){
+                    current.left = newNode;
+                    return this;
+                }
+                current = current.left;
+            }else {
+                if(current.right == null){
+                    current.right = newNode;
+                    return this;
+                }
+                current = current.right
+            }
+        }
+    }
+    find(val){
+        if(!this.root) return null;
+        let current = this.root;
+        let found = false;
+        while(current && !found){
+            if(current.val > val){
+                current = current.left;
+            }else if(current.val < val){
+                current = current.right;
+            }else {
+                found = true;
+            }
+        }
+        if(!found) return undefined;
+        return current;
+    }
+    Bfs(){
+        if(!this.root) return null;
+        let queue = [this.root];
+        let values = [];
+        while(queue.length > 0){
+            const current = queue.shift();
+            values.push(current.val);
+            if(current.left) queue.push(current.left);
+            if(current.right) queue.push(current.right);
+        }
+        return values;
+    }
+    Dfs(){
+        if(!this.root) return null;
+        let stack = [ this.root ];
+        const values = []
+        while(stack.length > 0){
+            const current = stack.pop();
+            values.push(current.val);
+            if(current.right) stack.push(current.right)
+            if(current.left) stack.push(current.left)
+        }
+        return values;
+    }
+    dfsRec(root = this.root){
+        if(root == null) return [];
+        let left = this.dfsRec(root.left);
+        let right = this.dfsRec(root.right);
+        return [root.val,...left,...right];
+    }
+    treeIncludesRec(root = this.root, target){
+        if(root == null) return false;
+        if(root.val == target) return true;
+        return this.treeIncludesRec(root.left,target) || this.treeIncludesRec(root.right,target);
+    }
+    treeSum(root= this.root){
+        if(root == null) return 0;
+        return root.val + this.treeSum(root.left) + this.treeSum(root.right)
+    }
+    treeMinValue(){
+        if(!this.root) return null;
+        const stack = [ this.root ];
+        let min = Infinity;
+        while(stack.length > 0){
+            const current = stack.pop();
+            min = ( min > current.val)?current.val : min;
+            if(current.left) stack.push(current.left);
+            if(current.right) stack.push(current.right);
+        }
+        return min;
+    }
+    maxPath(root = this.root){
+        if(root.left == null && root.right == null) return root.val;
+        const max = Math.max(this.maxPath(root.left),this.maxPath(root.right));
+        return root.val + max;
+    }
 }
 
+//      10
+//   5     13
+// 2  7  11  16
+
 var tree = new BinarySearchTree();
-tree.root = new Node(10);
-tree.root.right = new Node(15);
-tree.root.left = new Node(7);
-tree.root.left.right = new Node(9);
+tree.insert(10)
+tree.insert(5)
+tree.insert(13)
+tree.insert(11)
+tree.insert(2)
+tree.insert(16)
+tree.insert(7)
+console.log('find',tree.find(2))
+console.log('bfs',tree.Bfs())
+console.log('Dfs',tree.Dfs())
+console.log('Dfs recursie',tree.dfsRec())
+console.log('treeIncludesRec',tree.treeIncludesRec(tree.root,11))
+console.log('treeSum',tree.treeSum())
+console.log('treeMinValue',tree.treeMinValue())
+console.log('maxPath',tree.maxPath())
