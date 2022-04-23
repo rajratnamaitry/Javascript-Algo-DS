@@ -157,6 +157,10 @@ console.log('treeIncludesRec',tree.treeIncludesRec(tree.root,11)) // true
 console.log('treeSum',tree.treeSum()) // 64
 console.log('treeMinValue',tree.treeMinValue()) //2
 console.log('maxPath',tree.maxPath()) // 39
+//      10
+//   5     13
+// 2  7  11  16
+
 console.log("DFSPreOrder",tree.DFSPreOrder());   // DFSPreOrder (7) [10, 5, 2, 7, 13, 11, 16]
 console.log("DFSPostOrder",tree.DFSPostOrder()); // DFSPostOrder (7) [2, 7, 5, 11, 16, 13, 10]
 console.log("DFSInOrder",tree.DFSInOrder());     // DFSInOrder (7) [2, 5, 7, 10, 11, 13, 16]

@@ -109,7 +109,46 @@ class DoublyLinkedList {
     }
 }
 
-var list = new DoublyLinkedList()
-list.push("Harry")
-list.push("Ron")
-list.push("Hermione")
+var doublyLinkedList = new DoublyLinkedList();
+doublyLinkedList.push(5).push(10).push(15).push(20);
+// // Get
+// console.log('10',doublyLinkedList.get(1).val) // 10
+// console.log('5',doublyLinkedList.get(0).val) // 5
+// console.log('15',doublyLinkedList.get(2).val) // 15
+// console.log('20',doublyLinkedList.get(3).val) // 20
+// console.log('null',doublyLinkedList.get(4)) // null
+// //Pop
+// doublyLinkedList.push(5); // doublyLinkedList
+// console.log('1',doublyLinkedList.length); // 1
+// console.log('5',doublyLinkedList.head.val); // 5
+// console.log('5',doublyLinkedList.tail.val); // 5
+// console.log('null',doublyLinkedList.head.prev) // null
+// doublyLinkedList.push(10); //doublyLinkedList 
+// console.log('2',doublyLinkedList.length); // 2
+// console.log('5',doublyLinkedList.head.val); // 5
+// console.log('10',doublyLinkedList.head.next.val); // 10
+// console.log('10',doublyLinkedList.tail.val); // 10
+// console.log('10',doublyLinkedList.head.next.prev.val) // 10
+// doublyLinkedList.push(15);// doublyLinkedList
+// console.log('3',doublyLinkedList.length); // 3
+// console.log('5',doublyLinkedList.head.val); // 5
+// console.log('15',doublyLinkedList.tail.val); // 15
+// console.log('10',doublyLinkedList.tail.prev.val); // 10
+// console.log('15',doublyLinkedList.head.next.next.val); // 15
+// console.log('15',doublyLinkedList.pop().val); // 15
+// console.log('2',doublyLinkedList.length); // 2
+// console.log('10',doublyLinkedList.pop().val); // 10
+// console.log('1',doublyLinkedList.length); // 1
+// console.log('5',doublyLinkedList.pop().val); // 5
+// console.log('0',doublyLinkedList.length); // 0
+// console.log('undefined',doublyLinkedList.pop()); // undefined
+// console.log('0',doublyLinkedList.length); // 0
+// // remove
+// console.log('15',doublyLinkedList.remove(2).val); // 15
+// doublyLinkedList.remove(100); // undefined
+// console.log('3',doublyLinkedList.length) // 3
+// console.log('5',doublyLinkedList.head.val) // 5
+// console.log('10',doublyLinkedList.head.next.val) // 10
+// console.log('20',doublyLinkedList.head.next.next.val) // 20
+// // reverse
+// doublyLinkedList.reverse(); // singlyLinkedList;

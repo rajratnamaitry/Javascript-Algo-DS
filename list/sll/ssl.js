@@ -125,13 +125,55 @@ class SinglyLinkedList{
         }
         console.log(arr);
     }
+    printRec(){
+        const values = [];
+        const traverse = (node,values) =>{
+            if(node === null) return null;
+            values.push(node.val);
+            traverse(node.next,values)
+        }
+        traverse(this.head,values)
+        return values;
+    }
+    sumList(head = this.head){
+        if(head == null) return 0;
+        return head.val + this.sumList(head.next)
+    }
+    findRec(val, head = this.head){
+        if(head === null) return false;
+        if(head.val == val) return true;
+        return this.findRec(val, head.next);
+    }
+    getNode(index, head = this.head){
+        if(head == null) return null;
+        if(index == 0) return head.val;
+        return this.getNode(index - 1 , head.next);
+    }
+    ziperList(head1, head2){
+        if(head1 == null && head2 == null) return null;
+        if(head1 == null) return head2;
+        if(head2 == null) return head1;
+        const next1 = head1.next;
+        const next2 = head2.next;
+        head1.next = head2;
+        head2.next = this.ziperList(next1,next2);
+        return head1;
+    }
 }
 
 var singlyLinkedList = new SinglyLinkedList();
 singlyLinkedList.push(5).push(10).push(15).push(20);
+console.log('print',singlyLinkedList.printRec())
+console.log('sumList',singlyLinkedList.sumList())
+console.log('findRec',singlyLinkedList.findRec(10))
+console.log('getNode',singlyLinkedList.getNode(3))
+var singlyLinkedList2 = new SinglyLinkedList();
+singlyLinkedList2.push(7).push(13).push(17)
+console.log('getNode',singlyLinkedList.ziperList(singlyLinkedList.head,singlyLinkedList2.head))
+console.log('print',singlyLinkedList.printRec())
 // Get
 // singlyLinkedList.push(5).push(10).push(15).push(20);
-// console.log('5',singlyLinkedList.get(0).val) // 5
+// console.log('5',singlyLinkedList.get(0).val) //
 // console.log('10',singlyLinkedList.get(1).val) // 10
 // console.log('15',singlyLinkedList.get(2).val) // 15
 // console.log('20',singlyLinkedList.get(3).val) // 20
