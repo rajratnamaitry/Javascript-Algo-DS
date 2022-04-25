@@ -91,6 +91,15 @@ class Graph{
         }
         return result;
     }
+    hasPath(graph,src,dst){
+        if(src == dst) return true;
+        for (let n of graph[src]) {
+            if(this.hasPath(graph,n,dst)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 
@@ -123,40 +132,15 @@ g.addEdge("E","F")
 
 // QUEUE: []
 // RESULT: [A, B, C, D, E, F]
-
-var graph = new Graph();
-
-graph.addVertex('S');
-graph.addVertex('P');
-graph.addVertex('U');
-graph.addVertex('X');
-graph.addVertex('Q');
-graph.addVertex('Y');
-graph.addVertex('V');
-graph.addVertex('R');
-graph.addVertex('W');
-graph.addVertex('T');
-
-graph.addEdge('S','P');
-graph.addEdge('S','U');
-
-graph.addEdge('P','X');
-graph.addEdge('U','X');
-
-graph.addEdge('P','Q');
-graph.addEdge('U','V');
-
-graph.addEdge('X','Q');0
-graph.addEdge('X','Y');
-graph.addEdge('X','V');
-
-graph.addEdge('Q','R');
-graph.addEdge('Y','R');
-
-graph.addEdge('Y','W');
-graph.addEdge('V','W');
-
-graph.addEdge('R','T');
-graph.addEdge('W','T');
-
-graph.breadthFirstSearch('S'); // ["S", "P", "U", "X", "Q", "V", "Y", "R", "W", "T"]
+console.log(g.breadthFirst('A')); // (6) ['A', 'B', 'C', 'D', 'E', 'F']
+console.log(g.depthFirstIterative('A')); // (6) ['A', 'C', 'E', 'F', 'D', 'B']
+const graph = {
+    f: ['g', 'i'],
+    g: ['h'],
+    h: [],
+    i: ['g', 'k'],
+    j: ['i'],
+    k: []
+  };
+  
+console.log(g.hasPath(graph, 'f', 'k')); // true
