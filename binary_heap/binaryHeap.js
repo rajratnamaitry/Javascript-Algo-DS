@@ -1,24 +1,24 @@
 /**
  * BinaryHeap - insert Exercise
  * 
- * Implement the following functions on the maxBinaryHeap class
+ * Implement the following functions on the BinaryHeap class
  * 
  * insert
  * 
- * Implement the `insert` function on the `MaxBinaryHeap.prototype`: This function should insert a node in a binary heap. Make sure to re-order the heap after insertion if necessary.
+ * Implement the `insert` function on the `BinaryHeap.prototype`: This function should insert a node in a binary heap. Make sure to re-order the heap after insertion if necessary.
  * 
  */
   /**
  * BinaryHeap - extractMax Exercise
  * 
- * Implement the following functions on the maxBinaryHeap class
+ * Implement the following functions on the BinaryHeap class
  * 
  * extractMax
  * 
  * 
- * Implement the `extractMax` function on the `MaxBinaryHeap.prototype`: This function should remove the root node in a binary heap. Make sure to re-order the heap after removal if necessary.
+ * Implement the `extractMax` function on the `BinaryHeap.prototype`: This function should remove the root node in a binary heap. Make sure to re-order the heap after removal if necessary.
  */
- class MaxBinaryHeap { 
+ class BinaryHeap { 
     constructor(){
         this.values = [];
     }
@@ -76,7 +76,7 @@
         }
     }
 }
-let heap = new MaxBinaryHeap();
+let heap = new BinaryHeap();
 heap.insert(41);
 heap.insert(39);
 heap.insert(33);
