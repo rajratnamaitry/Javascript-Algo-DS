@@ -1,15 +1,23 @@
-/**
- * Trie Exercise - removeWord
- * 
- * Write a function called removeWord which accepts a string and removes the word from the Trie. addWord is implement to help you test the function.
- * 
-
- */
  class Trie {
     constructor() {
         this.characters = {};
         this.isWord = false;
     }
+    /**
+ * Trie Exercise - addWord
+ * 
+ * This function should add the given word starting from the given index to the Trie.
+ * 
+ * 
+ * It will be recursive and notify the correct child of this Trie to add the word starting from a later index.
+ * 
+ * Consider what the add function should do when it reaches the end of the word as a word does not necessarily end at a leaf.
+ * 
+ * You must mark nodes which are the ends of words so that the words can be reconstructed later.
+ * 
+
+ */
+
     addWord(word, index = 0) {
         if (index === word.length) {
             this.isWord = true;
@@ -21,7 +29,13 @@
         }
         return this;
     }
-
+    /** 
+     * Trie Exercise - findWord
+     * 
+     * Write a function called findWord which accepts a string and returns the characters object for the last character in that word if the string is a word in the Trie, otherwise it returns undefined. Try to solve this without having to find every single word in the Trie. addWord is implement to help you test the function.
+     * 
+     * index.js
+    */
     findWord(word, index = 0) {
         // This function will return the node in the trie
         // which corresponds to the end of the passed in word.
@@ -36,6 +50,12 @@
             return this.characters[char];
         }
     }
+    /**
+     * Trie Exercise - getWords
+     * 
+     * Write a function on the Trie.prototype called getWords which returns an array of all of the words in the Trie.
+     * 
+     */
     getWords(words = [], currentWord = "") {
         // This function will return all the words which are
         // contained in this Trie.
@@ -62,6 +82,14 @@
             return [];
         }
     }
+    
+    /**
+     * Trie Exercise - removeWord
+     * 
+     * Write a function called removeWord which accepts a string and removes the word from the Trie. addWord is implement to help you test the function.
+     * 
+
+    */
     removeWord(word) {
     }
 }
@@ -79,3 +107,13 @@ t.characters.f.characters.a.characters.t.isWord // false
 t.characters.f.characters.a.characters.t.characters.e.isWord // true
 t.removeWord('argue')
 t.characters.a.characters.r // undefined
+// find
+// t.addWord('fun')
+// t.addWord('fast')
+// t.addWord('fat')
+// t.addWord('fate')
+// t.addWord('father')
+// t.findWord('taco') // undefined
+// t.findWord('fat').characters // {t: Trie}
+// t.findWord('father').characters // {}
+// t.findWord('father').isWord // true
