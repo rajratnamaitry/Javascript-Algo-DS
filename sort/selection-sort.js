@@ -89,7 +89,7 @@ function selectionSort(arr) {
   return arr;
 }
 
-selectionSort([4, 20, 12, 10, 7, 9]); // [4, 7, 9, 10, 12, 20]
-selectionSort([0, -10, 7, 4]); // [-10, 0, 4, 7]
-selectionSort([1, 2, 3]); // [1, 2, 3]
-selectionSort([]);
+console.log('selection-sort',selectionSort([4, 20, 12, 10, 7, 9])); // [4, 7, 9, 10, 12, 20]
+// selectionSort([0, -10, 7, 4]); // [-10, 0, 4, 7]
+// selectionSort([1, 2, 3]); // [1, 2, 3]
+// selectionSort([]);
