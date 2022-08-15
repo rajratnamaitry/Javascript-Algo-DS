@@ -51,6 +51,7 @@
  * insertionSort(moarKittyData, oldestToYoungest); // sorted by age in descending order
  */
 // Examples
+// Big O O(n^2)
 function insertionSort(arr){
 	var currentVal;
     for(var i = 1; i < arr.length; i++){
@@ -62,8 +63,20 @@ function insertionSort(arr){
     }
     return arr;
 }
-
-insertionSort([4, 20, 12, 10, 7, 9]); // [4, 7, 9, 10, 12, 20]
-insertionSort([0, -10, 7, 4]); // [-10, 0, 4, 7]
-insertionSort([1, 2, 3]); // [1, 2, 3]
-insertionSort([]);
+// Alternative
+function insertionSort2(array){
+    for (let i = 1; i < array.length; i++) {
+        const element = array[i];
+        let j = i - 1;
+        while(j >= 0 && array[j] > element){
+            array[j+1] = array[j];
+            j = j - 1;
+        }
+        array[j+1] = element;
+    }
+    return array;
+}
+console.log('insertionSort',insertionSort2([4, 20, 12, 10, 7, 9])); // [4, 7, 9, 10, 12, 20]
+// insertionSort([0, -10, 7, 4]); // [-10, 0, 4, 7]
+// insertionSort([1, 2, 3]); // [1, 2, 3]
+// insertionSort([]);

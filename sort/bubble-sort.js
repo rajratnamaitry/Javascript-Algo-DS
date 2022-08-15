@@ -85,11 +85,45 @@ function bubbleSort(arr) {
   }
   return arr;
 }
+// Big-O O(n^2)
+function bubbleSort2(array) {
+  let swap;
+  do {
+    swap = false;
+    for (let i = 0; i < array.length; i++) {
+      if(array[i] > array[i+1]){
+        [array[i],array[i+1]] = [array[i+1],array[i]]
+        swap = true;
+      };    
+    }
+  } while(swap)
+  return array;
+}
 
-bubbleSort([8,1,2,3,4,5,6,7]);
-Examples
+console.log('bubble',bubbleSort2([8,1,2,3,4,5,6,7]));
+//Examples
 
-bubbleSort([4, 20, 12, 10, 7, 9]); // [4, 7, 9, 10, 12, 20]
-bubbleSort([0, -10, 7, 4]); // [-10, 0, 4, 7]
-bubbleSort([1, 2, 3]); // [1, 2, 3]
-bubbleSort([]);
+// bubbleSort([4, 20, 12, 10, 7, 9]); // [4, 7, 9, 10, 12, 20]
+// bubbleSort([0, -10, 7, 4]); // [-10, 0, 4, 7]
+// bubbleSort([1, 2, 3]); // [1, 2, 3]
+// bubbleSort([]);
+
+// Optimized BubbleSort with noSwaps
+function bubbleSort(arr){
+  var noSwaps;
+  for(var i = arr.length; i > 0; i--){
+    noSwaps = true;
+    for(var j = 0; j < i - 1; j++){
+      if(arr[j] > arr[j+1]){
+        var temp = arr[j];
+        arr[j] = arr[j+1];
+        arr[j+1] = temp;
+        noSwaps = false;         
+      }
+    }
+    if(noSwaps) break;
+  }
+  return arr;
+}
+
+console.log(bubbleSort([8,1,2,3,4,5,6,7]));

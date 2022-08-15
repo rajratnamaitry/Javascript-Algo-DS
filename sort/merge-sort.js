@@ -137,4 +137,4 @@ function mergeSort(arr){
     return merge(left, sright);
 }
 
-mergeSort([10,24,76,73])
+console.log('sort',mergeSort([10,24,76,73]));
