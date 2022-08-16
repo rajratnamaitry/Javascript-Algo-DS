@@ -15,6 +15,11 @@ npm run test
 * [Sort](#sort)
 * [Search](#search)
 * [Recursive](#recursive)
+* [Data-structures](#data-structures)
+* [Divide-and-conquer](#divide-and-conquer)
+* [Dynamic-programing](#dynamic-programing)
+* [Frequency](#frequency)
+* [General](#general)
 * [Others](#others)
 
 # Sort
@@ -34,6 +39,18 @@ npm run test
 # Recursive
 * Binary search
 * Quick sort
+
+# Data-structures
+**Up Coming**
+# Divide-and-conquer
+**Up Coming**
+# Dynamic-programing
+**Up Coming**
+# Frequency
+**Up Coming**
+# General
+**Up Coming**
+
 # Others
 * Is prime
 * Is power of two 
