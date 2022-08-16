@@ -7,8 +7,8 @@ npm run test
 ```
 # **Big-O Guide Cheat-sheet**
     Calculation not dependent on input size - O(1)
-    1 loop - O(n)
-    2 nested loops - O(n^2)
+    One loop - O(n)
+    Two nested loops - O(n^2)
     input size reduce by half - O(logn)
 
 # Algorithm
