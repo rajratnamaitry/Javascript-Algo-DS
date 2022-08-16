@@ -1,5 +1,10 @@
 # Javascript Algo and DS
 javascript algorithm and data structures
+
+# Usage
+```npm
+npm run test
+```
 # **Big-O Guide Cheat-sheet**
     Calculation not dependent on input size - O(1)
     1 loop - O(n)
@@ -8,6 +13,7 @@ javascript algorithm and data structures
 
 # Algorithm
 * [Sort](#sort)
+* [Search](#search)
 * [Recursive](#recursive)
 * [Others](#others)
 
@@ -20,6 +26,11 @@ javascript algorithm and data structures
 | Merge sort | O(n log n) |
 | Radix sort | O(n^2) |
 | Selection sort | O(n^2) |
+
+# Search 
+* Binary Search 
+* String Search
+* Linear Search
 # Recursive
 * Binary search
 * Quick sort
