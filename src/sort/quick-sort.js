@@ -72,7 +72,7 @@ function quickSortRec(array) {
           right.push(array[i]);
       }
   }
-  return [...qSort(left),pivot,...qSort(right)];
+  return [...quickSortRec(left),pivot,...quickSortRec(right)];
 }
 
 // [4,6,9,1,2,5,3]

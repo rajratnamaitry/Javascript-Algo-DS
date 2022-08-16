@@ -29,12 +29,6 @@ function getDigit(num, i) {
 // getDigit(12345, 4); // 1
 // getDigit(12345, 5); // 0
 
-// getDigit(8987, 0); // 7
-// getDigit(8987, 1); // 8
-// getDigit(8987, 2); // 9
-// getDigit(8987, 3); // 8
-// getDigit(8987, 4); // 0
-
 /**
  * Radix Sort Helper - digitCount
  * 
@@ -74,9 +68,8 @@ function mostDigits(nums) {
   }
   return maxDigits;
 }
-// mostDigits([23,567,89,12234324,90])
 // Examples
-
+// mostDigits([23,567,89,12234324,90])
 // mostDigits([1, 9, 10, 100, 99]); // 3
 // mostDigits([100, 1010, 1, 500]); // 4
 // mostDigits([0, 100000, 400, 12, 8]); // 6
@@ -94,18 +87,4 @@ function radixSort(nums){
     }
     return nums;
 }
-
-radixSort([23,345,5467,12,2345,9852])
-// Examples
-
-radixSort([8, 6, 1, 12]); // [1, 6, 8, 12]
-radixSort([10, 100, 1, 1000, 10000000]); // [1, 10, 100, 1000, 10000000]
-radixSort([902, 4, 7, 408, 29, 9637, 1556, 3556, 8157, 4386, 86, 593]); 
-// [4, 7, 29, 86, 408, 593, 902, 1556, 3556, 4386, 8157, 9637]
-module.exports.radixSort = radixSort;
-
-
-
-
-
-
+module.exports = { radixSort , getDigit , digitCount ,mostDigits};

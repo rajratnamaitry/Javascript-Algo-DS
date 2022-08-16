@@ -18,7 +18,7 @@ function mergeSortHelper(array1,array2){
         result.push(array1[i])
         i++;
     }
-    while (j < array1.length) {
+    while (j < array2.length) {
         result.push(array2[j])
         j++;
     }
@@ -28,7 +28,7 @@ function mergeSortHelper(array1,array2){
 function mergeSortHelper2(leftArr,rightArr){
     const sortedArr = [];
     while(leftArr.length && rightArr.length){
-        if(leftArr[0] > rightArr[0]){
+        if(leftArr[0] < rightArr[0]){
             sortedArr.push(leftArr.shift())
         } else {
             sortedArr.push(rightArr.shift())
@@ -42,8 +42,8 @@ function mergeSortHelper2(leftArr,rightArr){
 function mergeSort(array, flag = false) {
     if(array.length == 1) return array;
     const mid = Math.floor(array.length / 2);
-    let left = mergeSort(array.slice(0,mid))
-    let right = mergeSort(array.slice(mid))
+    let left = mergeSort(array.slice(0,mid),flag)
+    let right = mergeSort(array.slice(mid),flag)
     return flag ? mergeSortHelper2(left,right) : mergeSortHelper(left,right);
 }
 
