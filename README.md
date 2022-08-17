@@ -52,6 +52,7 @@ npm run test
 **Up Coming**
 
 # Others
-* Is prime
-* Is power of two 
-
+| Name | Big O |
+| Is prime | O(n) |
+| Is power of two  | O(log n)|
+| Cartesian product | O(n^2) |

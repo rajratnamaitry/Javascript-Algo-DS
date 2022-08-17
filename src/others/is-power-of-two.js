@@ -36,14 +36,4 @@ function isPowerOfTwoBitWise(n) {
     return (n & (n - 1)) ==0
     
 }
-console.log('isPowerOfTwo 1',isPowerOfTwo(1)) // true
-console.log('isPowerOfTwo 2',isPowerOfTwo(2)) // true
-console.log('isPowerOfTwo 5',isPowerOfTwo(5)) // false
-
-console.log('isPowerOfTwo2 1',isPowerOfTwo2(1)) // true
-console.log('isPowerOfTwo2 2',isPowerOfTwo2(2)) // true
-console.log('isPowerOfTwo2 5',isPowerOfTwo2(5)) // false
-
-console.log('isPowerOfTwoBitWise 1',isPowerOfTwoBitWise(1)) // true
-console.log('isPowerOfTwoBitWise 2',isPowerOfTwoBitWise(2)) // true
-console.log('isPowerOfTwoBitWise 5',isPowerOfTwoBitWise(5)) // false
+module.exports = { isPowerOfTwo, isPowerOfTwo2, isPowerOfTwoBitWise }

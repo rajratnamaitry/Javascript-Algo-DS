@@ -22,6 +22,4 @@ function isPrimeOpt(n) {
     } 
     return true;
 }
-console.log('isPrime 1' ,isPrime(1)) // false
-console.log('isPrime 4' ,isPrime(4)) // false
-console.log('isPrime 5' ,isPrime(5)) // true
+module.exports = { isPrime, isPrimeOpt }
