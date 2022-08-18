@@ -8,4 +8,4 @@ function countUniqueValues(array){
     }
     return count;
 }
-console.log('countUniqueValues',countUniqueValues([1,1,1,1,1,2,4,4]))
+module.exports.countUniqueValues = countUniqueValues;

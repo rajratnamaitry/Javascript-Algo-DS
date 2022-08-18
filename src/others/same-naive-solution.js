@@ -1,4 +1,4 @@
-function same(arr1, arr2){
+function sameNaive(arr1, arr2){
     if(arr1.length != arr2.length){
         return false;
     }
@@ -10,9 +10,7 @@ function same(arr1, arr2){
     return true;
 }
 
-console.log('same',same([1,2,3,2], [9,1,4,4]))
-
-function same2(arr1, arr2){
+function sameNaiveFreq(arr1, arr2){
     const frequencyCounter1 = {}    
     const frequencyCounter2 = {}    
     for (const i in arr1) {
@@ -28,4 +26,5 @@ function same2(arr1, arr2){
     }
     return true
 }
-console.log('same',same2([1,2,3,2], [9,1,4,4]))
+console.log('same',same([1,2,3,2], [9,1,4,4]))
+module.exports = { sameNaive , sameNaiveFreq }

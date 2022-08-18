@@ -8,4 +8,4 @@ function reverseInt(num) {
     }
     return reversedInt;
 }
-console.log('1321', reverseInt(1231))
+module.exports.reverseInt = reverseInt;

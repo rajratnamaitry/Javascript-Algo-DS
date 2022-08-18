@@ -19,23 +19,24 @@ npm run test
 * [Divide-and-conquer](#divide-and-conquer)
 * [Dynamic-programing](#dynamic-programing)
 * [Frequency](#frequency)
-* [General](#general)
 * [Others](#others)
 
 # Sort
-| Name | Big O |
-| --- | --- |
-| Bubble sort | O(n^2) |
-| Insertion sort | O(n^2) |
-| Quick sort | O(n^2) |
-| Merge sort | O(n log n) |
-| Radix sort | O(n^2) |
-| Selection sort | O(n^2) |
+| No | Name | Big O |
+| - | --- | --- |
+| 1 | Bubble sort | O(n^2) |
+| 2 | Insertion sort | O(n^2) |
+| 3 | Quick sort | O(n^2) |
+| 4 | Merge sort | O(n log n) |
+| 5 | Radix sort | O(n^2) |
+| 6 | Selection sort | O(n^2) |
 
 # Search 
-* Binary Search 
-* String Search
-* Linear Search
+|No|Name| Big O |
+| - | --- | --- |
+| 1 | Binary Search | O(n) |
+| 2 | String Search | O(n) |
+| 3 | Linear Search | O(n) |
 # Recursive
 * Binary search
 * Quick sort
@@ -48,11 +49,20 @@ npm run test
 **Up Coming**
 # Frequency
 **Up Coming**
-# General
-**Up Coming**
-
 # Others
-| Name | Big O |
-| Is prime | O(n) |
-| Is power of two  | O(log n)|
-| Cartesian product | O(n^2) |
+|No. | Name | Big O |
+| - | --- | --- |
+| 1 | Sum Zero Naive | O(n) |
+| 2 | Is Prime | O(n) |
+| 3 | Is Power Of Two  | O(log n) |
+| 4 | Cartesian Product | O(n^2) |
+| 5 | Climbing Staircase | O(n) |
+| 6 | Tower Of Hanoi | O(2^n) |
+| 7 | Count Unique Values | O(n) |
+| 8 | Fibonacci Series | O(n) |
+| 9 | Find Longest Substring | O(n) |
+| 10 | Average Pair | - |
+| 11 | Max Sub Array | O(n) |
+| 12 | Min Sub Array | O(n) |
+| 13 | Reverse Number | O(n) |
+| 14 | Same Naive Solution | O(n) |

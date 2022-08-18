@@ -9,3 +9,4 @@
  }
  
  averagePair([1,2,3],2.5) // true
+ module.exports.averagePair = averagePair;

@@ -18,7 +18,8 @@ function maxSubArraySum(array,num){
     return max;
 
 }
-function maxSubarraySum2(arr, num){
+// Optimize
+function maxSubarraySumOpt(arr, num){
     if (arr.length < num) return null;
  
     let total = 0;
@@ -32,6 +33,4 @@ function maxSubarraySum2(arr, num){
     }
     return total;
 }
-
-console.log(maxSubArraySum([1,2,5,2,8,1,5],2)) // 10
-console.log(maxSubArraySum([1,2,5,2,8,1,5],4)) // 17
+module.exports = {maxSubArraySum , maxSubarraySumOpt}
