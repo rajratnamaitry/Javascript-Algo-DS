@@ -1,6 +1,5 @@
 # Javascript Algo and DS
 javascript algorithm and data structures
-
 # Usage
 ```npm
 npm run test
@@ -10,17 +9,16 @@ npm run test
     One loop - O(n)
     Two nested loops - O(n^2)
     input size reduce by half - O(logn)
-
 # Algorithm
 * [Sort](#sort)
 * [Search](#search)
-* [Recursive](#recursive)
 * [Data-structures](#data-structures)
-* [Divide-and-conquer](#divide-and-conquer)
-* [Dynamic-programing](#dynamic-programing)
-* [Frequency](#frequency)
 * [Others](#others)
-
+    * [Misc problem](#frequency)
+    * [Recursive](#recursive)
+    * [Divide-and-conquer](#divide-and-conquer)
+    * [Dynamic-programing](#dynamic-programing)
+    * [Frequency](#frequency)
 # Sort
 | No | Name | Big O |
 | - | --- | --- |
@@ -30,7 +28,6 @@ npm run test
 | 4 | Merge sort | O(n log n) |
 | 5 | Radix sort | O(n^2) |
 | 6 | Selection sort | O(n^2) |
-
 # Search 
 |No|Name| Big O |
 | - | --- | --- |
@@ -40,16 +37,8 @@ npm run test
 # Recursive
 * Binary search
 * Quick sort
-
-# Data-structures
-**Up Coming**
-# Divide-and-conquer
-**Up Coming**
-# Dynamic-programing
-**Up Coming**
-# Frequency
-**Up Coming**
 # Others
+## Misc-problem
 |No. | Name | Big O |
 | - | --- | --- |
 | 1 | Sum Zero Naive | O(n) |
@@ -66,3 +55,7 @@ npm run test
 | 12 | Min Sub Array | O(n) |
 | 13 | Reverse Number | O(n) |
 | 14 | Same Naive Solution | O(n) |
+## Data-structures
+## Divide-and-conquer
+## Dynamic-programing
+## Frequency
