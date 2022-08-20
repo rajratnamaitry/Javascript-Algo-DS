@@ -4,29 +4,29 @@
  * checks whether there are any duplicates among the arguments passed in.  
  * You can solve this using the frequency counter pattern OR the multiple pointers pattern.
  */
-    // Frequency Counter  
-    function areThereDuplicates() {
-        let collection = {}
-        for(let val in arguments){
-            collection[arguments[val]] = (collection[arguments[val]] || 0) + 1
-        }
-        for(let key in collection){
-            if(collection[key] > 1) return true
-        }
-        return false;
+// Frequency Counter  
+function areThereDuplicates() {
+    let collection = {}
+    for (let val in arguments) {
+        collection[arguments[val]] = (collection[arguments[val]] || 0) + 1
     }
-    // one liner
-    function areThereDuplicates2() {
-        return new Set(arguments).size !== arguments.length;
-    }  
-    // Multiple Pointers
-    function areThereDuplicates3(...args) {
-     // do
+    for (let key in collection) {
+        if (collection[key] > 1) return true
     }
-    // areThereDuplicates(1, 2, 3) // false
-    // areThereDuplicates(1, 2, 2) // true
-    // areThereDuplicates2(1, 2, 3) // false
-    // areThereDuplicates2(1, 2, 2) // true
-    // areThereDuplicates3(1, 2, 3) // false
-    // areThereDuplicates3(1, 2, 2) // true
-    module.exports = { areThereDuplicates , areThereDuplicates2 , areThereDuplicates3 }
+    return false;
+}
+// one liner
+function areThereDuplicates2() {
+    return new Set(arguments).size !== arguments.length;
+}
+// Multiple Pointers
+function areThereDuplicates3(...args) {
+    // do
+}
+// areThereDuplicates(1, 2, 3) // false
+// areThereDuplicates(1, 2, 2) // true
+// areThereDuplicates2(1, 2, 3) // false
+// areThereDuplicates2(1, 2, 2) // true
+// areThereDuplicates3(1, 2, 3) // false
+// areThereDuplicates3(1, 2, 2) // true
+module.exports = { areThereDuplicates, areThereDuplicates2, areThereDuplicates3 }

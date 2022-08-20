@@ -1,16 +1,16 @@
 import { describe, it, expect } from 'vitest'
-import { cartesian } from '../../src/others/cartesian-product';
-import { isPowerOfTwo, isPowerOfTwo2, isPowerOfTwoBitWise } from '../../src/others/is-power-of-two';
-import { isPrime, isPrimeOpt } from '../../src/others/is-prime';
-import { climbingStaircase } from '../../src/others/climbing-staircase';
-import { countUniqueValues } from '../../src/others/count-unique-values';
-import { fibonacciSeries, fibonacciSeriesOpt , fibonacciSeriesOpt2 } from '../../src/others/fibonacci-series'
-import { findLongestSubString } from '../../src/others/find-longest-sub-string'
-import { maxSubArraySum , maxSubarraySumOpt } from '../../src/others/max-sub-array-sum'
-import { minSubArraySum } from '../../src/others/min-sub-array-sum'
-import { reverseInt } from '../../src/others/reverse-int'
-import { sameNaive , sameNaiveFreq } from '../../src/others/same-naive-solution'
-import { sumZero } from '../../src/others/sum-zero-naive'
+import { cartesian } from '../../src/others/misc-problems/cartesian-product';
+import { isPowerOfTwo, isPowerOfTwo2, isPowerOfTwoBitWise } from '../../src/others/misc-problems/is-power-of-two';
+import { isPrime, isPrimeOpt } from '../../src/others/misc-problems/is-prime';
+import { climbingStaircase } from '../../src/others/misc-problems/climbing-staircase';
+import { countUniqueValues } from '../../src/others/misc-problems/count-unique-values';
+import { fibonacciSeries, fibonacciSeriesOpt , fibonacciSeriesOpt2 } from '../../src/others/misc-problems/fibonacci-series'
+import { findLongestSubString } from '../../src/others/misc-problems/find-longest-sub-string'
+import { maxSubArraySum , maxSubarraySumOpt } from '../../src/others/misc-problems/max-sub-array-sum'
+import { minSubArraySum } from '../../src/others/misc-problems/min-sub-array-sum'
+import { reverseInt } from '../../src/others/misc-problems/reverse-int'
+import { sameNaive , sameNaiveFreq } from '../../src/others/misc-problems/same-naive-solution'
+import { sumZero } from '../../src/others/misc-problems/sum-zero-naive'
 describe('Misc Problems',()=>{
     describe('Cartesian Products',()=>{
         it('Normal',()=>{
