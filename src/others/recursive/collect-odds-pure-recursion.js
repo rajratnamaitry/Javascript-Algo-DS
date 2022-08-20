@@ -14,8 +14,4 @@ function collectOddValues(arr){
 }
 
 console.log(collectOddValues([1,2,3,4,5]))
-                                        
-                                                                
-                                                                             
-                            
-            
+module.exports.collectOddValues = collectOddValues;

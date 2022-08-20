@@ -12,3 +12,4 @@
   return res;
 }
 console.log('captial',capitalizeFirst(['raj','ramesh', 'maitry']))
+module.exports.capitalizeFirst = capitalizeFirst;
