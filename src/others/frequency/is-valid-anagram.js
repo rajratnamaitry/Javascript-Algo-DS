@@ -16,4 +16,5 @@ function validAnagram(first, second) {
     }
     return true;
 }
-console.log('valid',validAnagram('put', 'tup'))
+// console.log('valid',validAnagram('put', 'tup'))
+module.exports.validAnagram = validAnagram;

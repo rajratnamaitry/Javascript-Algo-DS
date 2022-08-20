@@ -12,6 +12,7 @@
 function constructNote(){
 // add whatever parameters you deem necessary - good luck!
 }
-constructNote('aa', 'abc') // false
-constructNote('abc', 'dcba') // true
-constructNote('aabbcc', 'bcabcaddff') // true
+// constructNote('aa', 'abc') // false
+// constructNote('abc', 'dcba') // true
+// constructNote('aabbcc', 'bcabcaddff') // true
+module.exports.constructNote = constructNote;

@@ -141,26 +141,27 @@ class BinarySearchTree {
 //   5     13
 // 2  7  11  16
 
-var tree = new BinarySearchTree();
-tree.insert(10)
-tree.insert(5)
-tree.insert(13)
-tree.insert(11)
-tree.insert(2)
-tree.insert(16)
-tree.insert(7)
-console.log('find',tree.find(2))
-console.log('bfs',tree.Bfs())
-console.log('Dfs',tree.Dfs())
-console.log('Dfs recursie',tree.dfsRec())
-console.log('treeIncludesRec',tree.treeIncludesRec(tree.root,11)) // true
-console.log('treeSum',tree.treeSum()) // 64
-console.log('treeMinValue',tree.treeMinValue()) //2
-console.log('maxPath',tree.maxPath()) // 39
-//      10
-//   5     13
-// 2  7  11  16
+// var tree = new BinarySearchTree();
+// tree.insert(10)
+// tree.insert(5)
+// tree.insert(13)
+// tree.insert(11)
+// tree.insert(2)
+// tree.insert(16)
+// tree.insert(7)
+// console.log('find',tree.find(2))
+// console.log('bfs',tree.Bfs())
+// console.log('Dfs',tree.Dfs())
+// console.log('Dfs recursie',tree.dfsRec())
+// console.log('treeIncludesRec',tree.treeIncludesRec(tree.root,11)) // true
+// console.log('treeSum',tree.treeSum()) // 64
+// console.log('treeMinValue',tree.treeMinValue()) //2
+// console.log('maxPath',tree.maxPath()) // 39
+// //      10
+// //   5     13
+// // 2  7  11  16
 
-console.log("DFSPreOrder",tree.DFSPreOrder());   // DFSPreOrder (7) [10, 5, 2, 7, 13, 11, 16]
-console.log("DFSPostOrder",tree.DFSPostOrder()); // DFSPostOrder (7) [2, 7, 5, 11, 16, 13, 10]
-console.log("DFSInOrder",tree.DFSInOrder());     // DFSInOrder (7) [2, 5, 7, 10, 11, 13, 16]
+// console.log("DFSPreOrder",tree.DFSPreOrder());   // DFSPreOrder (7) [10, 5, 2, 7, 13, 11, 16]
+// console.log("DFSPostOrder",tree.DFSPostOrder()); // DFSPostOrder (7) [2, 7, 5, 11, 16, 13, 10]
+// console.log("DFSInOrder",tree.DFSInOrder());     // DFSInOrder (7) [2, 5, 7, 10, 11, 13, 16]
+module.exports.BinarySearchTree = BinarySearchTree;

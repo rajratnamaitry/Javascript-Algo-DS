@@ -44,15 +44,15 @@ class Stack {
     }
 }
 // Note: The tests for pop rely on push working (it has been implemented for you)
+module.exports.Stack = Stack;
+// var stack = new Stack();
 
-var stack = new Stack();
-
-stack.push(10);
-stack.push(100);
-stack.push(1000);
-var removed = stack.pop();
-removed // 1000
-stack.size // 2
-stack.pop();
-stack.pop();
-stack.size // 0
+// stack.push(10);
+// stack.push(100);
+// stack.push(1000);
+// var removed = stack.pop();
+// removed // 1000
+// stack.size // 2
+// stack.pop();
+// stack.pop();
+// stack.size // 0

@@ -108,9 +108,9 @@ class DoublyLinkedList {
         return true;
     }
 }
-
-var doublyLinkedList = new DoublyLinkedList();
-doublyLinkedList.push(5).push(10).push(15).push(20);
+module.exports.DoublyLinkedList = DoublyLinkedList;
+// var doublyLinkedList = new DoublyLinkedList();
+// doublyLinkedList.push(5).push(10).push(15).push(20);
 // // Get
 // console.log('10',doublyLinkedList.get(1).val) // 10
 // console.log('5',doublyLinkedList.get(0).val) // 5

@@ -33,23 +33,24 @@ class Stack {
         return ++this.size;
     }
 }
-var stack = new Stack();
+// var stack = new Stack();
 
-stack.push(10) // 1
-stack.first.value // 10
-stack.last.value // 10
-stack.push(100);
-stack.first.value // 100
-stack.last.value // 10
-stack.push(1000);
-stack.first.value // 1000
-stack.last.value // 10
+// stack.push(10) // 1
+// stack.first.value // 10
+// stack.last.value // 10
+// stack.push(100);
+// stack.first.value // 100
+// stack.last.value // 10
+// stack.push(1000);
+// stack.first.value // 1000
+// stack.last.value // 10
 
-var stack = new Stack();
+// var stack = new Stack();
 
-stack.push(10) // 1
-stack.size // 1
-stack.push(100) // 2
-stack.size // 2
-stack.push(1000) // 3
-stack.size // 3
+// stack.push(10) // 1
+// stack.size // 1
+// stack.push(100) // 2
+// stack.size // 2
+// stack.push(1000) // 3
+// stack.size // 3
+module.exports.Stack = Stack;

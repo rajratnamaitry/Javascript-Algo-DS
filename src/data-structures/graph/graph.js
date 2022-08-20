@@ -231,26 +231,23 @@ class Graph {
         return size;
     };
 }
+// let g = new Graph();
+
+// g.addVertex("A")
+// g.addVertex("B")
+// g.addVertex("C")
+// g.addVertex("D")
+// g.addVertex("E")
+// g.addVertex("F")
 
 
-
-let g = new Graph();
-
-g.addVertex("A")
-g.addVertex("B")
-g.addVertex("C")
-g.addVertex("D")
-g.addVertex("E")
-g.addVertex("F")
-
-
-g.addEdge("A", "B")
-g.addEdge("A", "C")
-g.addEdge("B", "D")
-g.addEdge("C", "E")
-g.addEdge("D", "E")
-g.addEdge("D", "F")
-g.addEdge("E", "F")
+// g.addEdge("A", "B")
+// g.addEdge("A", "C")
+// g.addEdge("B", "D")
+// g.addEdge("C", "E")
+// g.addEdge("D", "E")
+// g.addEdge("D", "F")
+// g.addEdge("E", "F")
 
 //          A
 //        /   \
@@ -262,38 +259,39 @@ g.addEdge("E", "F")
 
 // QUEUE: []
 // RESULT: [A, B, C, D, E, F]
-console.log(g.breadthFirst('A')); // (6) ['A', 'B', 'C', 'D', 'E', 'F']
-console.log(g.depthFirstIterative('A')); // (6) ['A', 'C', 'E', 'F', 'D', 'B']
-const graph = {
-    f: ['g', 'i'],
-    g: ['h'],
-    h: [],
-    i: ['g', 'k'],
-    j: ['i'],
-    k: []
-};
+// console.log(g.breadthFirst('A')); // (6) ['A', 'B', 'C', 'D', 'E', 'F']
+// console.log(g.depthFirstIterative('A')); // (6) ['A', 'C', 'E', 'F', 'D', 'B']
+// const graph = {
+//     f: ['g', 'i'],
+//     g: ['h'],
+//     h: [],
+//     i: ['g', 'k'],
+//     j: ['i'],
+//     k: []
+// };
 
-console.log(g.hasPath(graph, 'f', 'k')); // true 
-console.log(g.connectCompCount(graph)); // 2
-console.log(g.largestComp(graph)); // 3 
+// console.log(g.hasPath(graph, 'f', 'k')); // true 
+// console.log(g.connectCompCount(graph)); // 2
+// console.log(g.largestComp(graph)); // 3 
 
-const islandGrid = [
-    ['W', 'L', 'W', 'W', 'W'],
-    ['W', 'L', 'W', 'W', 'W'],
-    ['W', 'W', 'W', 'L', 'W'],
-    ['W', 'W', 'L', 'L', 'W'],
-    ['L', 'W', 'W', 'L', 'L'],
-    ['L', 'L', 'W', 'W', 'W'],
-];
-// r = number of rows
-// c = number of columns
-// Time: O(rc)
-// Space: O(rc)
-const minimumIslandGrid = [
-    ['W', 'L', 'W', 'W', 'W'],
-    ['W', 'L', 'W', 'W', 'W'],
-    ['W', 'W', 'W', 'L', 'W'],
-    ['W', 'W', 'L', 'L', 'W'],
-    ['L', 'W', 'W', 'L', 'L'],
-    ['L', 'L', 'W', 'W', 'W'],
-];
+// const islandGrid = [
+//     ['W', 'L', 'W', 'W', 'W'],
+//     ['W', 'L', 'W', 'W', 'W'],
+//     ['W', 'W', 'W', 'L', 'W'],
+//     ['W', 'W', 'L', 'L', 'W'],
+//     ['L', 'W', 'W', 'L', 'L'],
+//     ['L', 'L', 'W', 'W', 'W'],
+// ];
+// // r = number of rows
+// // c = number of columns
+// // Time: O(rc)
+// // Space: O(rc)
+// const minimumIslandGrid = [
+//     ['W', 'L', 'W', 'W', 'W'],
+//     ['W', 'L', 'W', 'W', 'W'],
+//     ['W', 'W', 'W', 'L', 'W'],
+//     ['W', 'W', 'L', 'L', 'W'],
+//     ['L', 'W', 'W', 'L', 'L'],
+//     ['L', 'L', 'W', 'W', 'W'],
+// ];
+module.exports.Graph = Graph

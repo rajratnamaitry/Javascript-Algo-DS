@@ -23,9 +23,10 @@
     function areThereDuplicates3(...args) {
      // do
     }
-    areThereDuplicates(1, 2, 3) // false
-    areThereDuplicates(1, 2, 2) // true
-    areThereDuplicates2(1, 2, 3) // false
-    areThereDuplicates2(1, 2, 2) // true
-    areThereDuplicates3(1, 2, 3) // false
-    areThereDuplicates3(1, 2, 2) // true
+    // areThereDuplicates(1, 2, 3) // false
+    // areThereDuplicates(1, 2, 2) // true
+    // areThereDuplicates2(1, 2, 3) // false
+    // areThereDuplicates2(1, 2, 2) // true
+    // areThereDuplicates3(1, 2, 3) // false
+    // areThereDuplicates3(1, 2, 2) // true
+    module.exports = { areThereDuplicates , areThereDuplicates2 , areThereDuplicates3 }

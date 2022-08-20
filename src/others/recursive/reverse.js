@@ -5,5 +5,6 @@ function reverse(n){
     // add whatever parameters you deem necessary - good luck!  
     if(n.length === 0) return n;  return reverse(n.slice(1)) + n[0];
 }
-reverse('awesome') // 'emosewa'
-reverse('rithmschool') //
+// reverse('awesome') // 'emosewa'
+// reverse('rithmschool') //
+module.exports.reverse = reverse;

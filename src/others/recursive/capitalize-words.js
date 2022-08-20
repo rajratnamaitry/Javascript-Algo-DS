@@ -8,6 +8,6 @@
     }
     let res = capitalizeWords(array.slice(0, -1));
     res.push(array.slice(array.length-1)[0].toUpperCase());
-    return res;   
+    return res;
   }
   module.exports.capitalizeWords = capitalizeWords;

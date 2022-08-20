@@ -56,13 +56,14 @@ class Queue {
         return temp.value;
     }
 }
-var s = new Stack()
-s.push(10).push(20).push(30)
-s.pop() // 30
-s.pop() // 20
-s.pop() // 10
-s.pop() // null
-s.push(30).push(40).push(50)
-s.pop() // 50
-s.push(60)
-s.pop() // 60
+module.exports.Stack = Stack;
+// var s = new Stack()
+// s.push(10).push(20).push(30)
+// s.pop() // 30
+// s.pop() // 20
+// s.pop() // 10
+// s.pop() // null
+// s.push(30).push(40).push(50)
+// s.pop() // 50
+// s.push(60)
+// s.pop() // 60

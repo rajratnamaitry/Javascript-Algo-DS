@@ -15,8 +15,9 @@ function isPalindrome(n){
     if(n[0] === n.slice(-1)) return isPalindrome(n.slice(1,-1));
     return false;
 }
-isPalindrome('awesome') // false
-isPalindrome('foobar') // false
-isPalindrome('tacocat') // true
-isPalindrome('amanaplanacanalpanama') // true
-isPalindrome('amanaplanacanalpandemonium') // false
+// isPalindrome('awesome') // false
+// isPalindrome('foobar') // false
+// isPalindrome('tacocat') // true
+// isPalindrome('amanaplanacanalpanama') // true
+// isPalindrome('amanaplanacanalpandemonium') // false
+module.exports = { isPalindrome }

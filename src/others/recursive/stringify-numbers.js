@@ -16,3 +16,5 @@
     }
     return newObj;
   }
+
+  module.exports.stringifyNumbers = stringifyNumbers

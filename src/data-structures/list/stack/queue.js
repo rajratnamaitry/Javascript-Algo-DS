@@ -48,10 +48,11 @@ class Queue {
         return temp.value;
     }
 }
-var queue = new Queue();
-queue.enqueue(10) // 1
-queue.size // 1
-queue.enqueue(100) // 2
-queue.size // 2
-queue.enqueue(1000) // 3
-queue.size // 3
+module.exports.Queue = Queue
+// var queue = new Queue();
+// queue.enqueue(10) // 1
+// queue.size // 1
+// queue.enqueue(100) // 2
+// queue.size // 2
+// queue.enqueue(1000) // 3
+// queue.size // 3

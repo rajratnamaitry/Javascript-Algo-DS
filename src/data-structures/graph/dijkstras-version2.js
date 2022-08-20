@@ -142,58 +142,59 @@ class Node {
     }
 }
 
-var graph = new WeightedGraph()
-graph.addVertex("A");
-graph.addVertex("B");
-graph.addVertex("C");
-graph.addVertex("D");
-graph.addVertex("E");
-graph.addVertex("F");
+// var graph = new WeightedGraph()
+// graph.addVertex("A");
+// graph.addVertex("B");
+// graph.addVertex("C");
+// graph.addVertex("D");
+// graph.addVertex("E");
+// graph.addVertex("F");
 
-graph.addEdge("A","B", 4);
-graph.addEdge("A","C", 2);
-graph.addEdge("B","E", 3);
-graph.addEdge("C","D", 2);
-graph.addEdge("C","F", 4);
-graph.addEdge("D","E", 3);
-graph.addEdge("D","F", 1);
-graph.addEdge("E","F", 1);
+// graph.addEdge("A","B", 4);
+// graph.addEdge("A","C", 2);
+// graph.addEdge("B","E", 3);
+// graph.addEdge("C","D", 2);
+// graph.addEdge("C","F", 4);
+// graph.addEdge("D","E", 3);
+// graph.addEdge("D","F", 1);
+// graph.addEdge("E","F", 1);
 
 
-graph.Dijkstra("A", "E");
+// graph.Dijkstra("A", "E");
 
-var g = new WeightedGraph()
+// var g = new WeightedGraph()
 
-g.addVertex('A');
-g.addVertex('Z');
-g.addVertex('C');
-g.addVertex('D');
-g.addVertex('E');
-g.addVertex('H');
-g.addVertex('Q');
-g.addVertex('G');
+// g.addVertex('A');
+// g.addVertex('Z');
+// g.addVertex('C');
+// g.addVertex('D');
+// g.addVertex('E');
+// g.addVertex('H');
+// g.addVertex('Q');
+// g.addVertex('G');
 
-g.addEdge('A', 'Z', 7)
-g.addEdge('A', 'C', 8)
+// g.addEdge('A', 'Z', 7)
+// g.addEdge('A', 'C', 8)
 
-g.addEdge('Z', 'Q', 2)
+// g.addEdge('Z', 'Q', 2)
 
-g.addEdge('C', 'G', 4)
+// g.addEdge('C', 'G', 4)
 
-g.addEdge('D', 'Q', 8)
+// g.addEdge('D', 'Q', 8)
 
-g.addEdge('E', 'H', 1)
+// g.addEdge('E', 'H', 1)
 
-g.addEdge('H', 'Q', 3)
+// g.addEdge('H', 'Q', 3)
 
-g.addEdge('Q', 'C', 6)
+// g.addEdge('Q', 'C', 6)
 
-g.addEdge('G', 'Q', 9)
+// g.addEdge('G', 'Q', 9)
 
-g.Dijkstra('A','E') // ["A", "Z", "Q", "H", "E"]
-g.Dijkstra('A','Q') // ["A", "Z", "Q"]
-g.Dijkstra('A','G') // ["A", "C", "G"]
-g.Dijkstra('A','D') // ["A", "Z", "Q", "D"]
+// g.Dijkstra('A','E') // ["A", "Z", "Q", "H", "E"]
+// g.Dijkstra('A','Q') // ["A", "Z", "Q"]
+// g.Dijkstra('A','G') // ["A", "C", "G"]
+// g.Dijkstra('A','D') // ["A", "Z", "Q", "D"]
+module.exports.WeightedGraph = WeightedGraph;
 /**
  * function WeightedGraph() {}
 

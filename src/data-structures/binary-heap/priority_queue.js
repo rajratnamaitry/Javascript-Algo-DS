@@ -68,18 +68,18 @@ class Node {
     }
 }
 
-let ER = new PriorityQueue();
-ER.enqueue("common cold",5)
-ER.enqueue("gunshot wound", 1)
-ER.enqueue("high fever",4)
-ER.enqueue("broken arm",2)
-ER.enqueue("glass in foot",3)
-ER.enqueue("dead",0)
-ER.values.forEach(e=> console.log(e.val,e.priority));
-console.log('=================================')
-ER.dequeue()
-ER.values.forEach(e=> console.log(e.val,e.priority));
-
+// let ER = new PriorityQueue();
+// ER.enqueue("common cold",5)
+// ER.enqueue("gunshot wound", 1)
+// ER.enqueue("high fever",4)
+// ER.enqueue("broken arm",2)
+// ER.enqueue("glass in foot",3)
+// ER.enqueue("dead",0)
+// ER.values.forEach(e=> console.log(e.val,e.priority));
+// console.log('=================================')
+// ER.dequeue()
+// ER.values.forEach(e=> console.log(e.val,e.priority));
+module.exports.PriorityQueue = PriorityQueue;
 
 
 

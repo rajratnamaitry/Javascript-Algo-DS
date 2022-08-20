@@ -7,6 +7,7 @@
     if(n===0) return 0;   
     return n+recursiveRange(n-1);
  }
-//SAMPLE INPUT/OUTPUT
-recursiveRange(6) // 21
-recursiveRange(10) // 55 
+// //SAMPLE INPUT/OUTPUT
+// recursiveRange(6) // 21
+// recursiveRange(10) // 55 
+module.exports.recursiveRange = recursiveRange;

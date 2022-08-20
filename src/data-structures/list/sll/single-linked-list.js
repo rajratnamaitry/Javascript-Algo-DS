@@ -160,17 +160,17 @@ class SinglyLinkedList{
         return head1;
     }
 }
-
-var singlyLinkedList = new SinglyLinkedList();
-singlyLinkedList.push(5).push(10).push(15).push(20);
-console.log('print',singlyLinkedList.printRec())
-console.log('sumList',singlyLinkedList.sumList())
-console.log('findRec',singlyLinkedList.findRec(10))
-console.log('getNode',singlyLinkedList.getNode(3))
-var singlyLinkedList2 = new SinglyLinkedList();
-singlyLinkedList2.push(7).push(13).push(17)
-console.log('getNode',singlyLinkedList.ziperList(singlyLinkedList.head,singlyLinkedList2.head))
-console.log('print',singlyLinkedList.printRec())
+module.exports.SinglyLinkedList = SinglyLinkedList;
+// var singlyLinkedList = new SinglyLinkedList();
+// singlyLinkedList.push(5).push(10).push(15).push(20);
+// console.log('print',singlyLinkedList.printRec())
+// console.log('sumList',singlyLinkedList.sumList())
+// console.log('findRec',singlyLinkedList.findRec(10))
+// console.log('getNode',singlyLinkedList.getNode(3))
+// var singlyLinkedList2 = new SinglyLinkedList();
+// singlyLinkedList2.push(7).push(13).push(17)
+// console.log('getNode',singlyLinkedList.ziperList(singlyLinkedList.head,singlyLinkedList2.head))
+// console.log('print',singlyLinkedList.printRec())
 // Get
 // singlyLinkedList.push(5).push(10).push(15).push(20);
 // console.log('5',singlyLinkedList.get(0).val) //
