@@ -1,4 +1,4 @@
-function validAnagram(first, second) {
+function isValidAnagram(first, second) {
     if(first.length != second.length){
         return false;
     }
@@ -11,10 +11,8 @@ function validAnagram(first, second) {
         frequencyStr2[second[i]] = (frequencyStr2[second[i]] ? frequencyStr2[second[i]]+1 : 1) 
     }
     for (const iterator in frequencyStr2) {
-        console.log(frequencyStr1[iterator] , frequencyStr2[iterator])
         if(frequencyStr1[iterator] != frequencyStr2[iterator]) return false;
     }
     return true;
 }
-// console.log('valid',validAnagram('put', 'tup'))
-module.exports.validAnagram = validAnagram;
+module.exports.isValidAnagram = isValidAnagram;

@@ -76,24 +76,24 @@ npm run test
 | - | --- | --- |
 | 1 |  Is valid anagram  | - |
 | 2 |  Are there duplicate  | - |
-| 3 |  Construct note  | - |
-| 4 |  Find all duplicates  | - |
+| 3 |  Construct note  | O(n) |
+| 4 |  Find all duplicates  | O(n) |
 | 5 |  Find pair  | - |
-| 6 |  Frequency counter  | - |
+| 6 |  Frequency counter  | O(n) |
 ## Recursive
 | No | Name | Big O |
 | - | --- | --- |
-| 1 | Captialize first | - |
-| 2 | Captialize words | - |
-| 3 | Collect odds | - |
-| 4 | Collect strings | - |
-| 5 | Factorial | - |
-| 6 | Flatten write | - |
-| 7 | Is palindrome  | - |
-| 8 | Nested even sum | - |
-| 9 | Power | - |
-| 10 | Product array | - |
-| 11 | Recursive range | - |
-| 12 | Reverse | - |
-| 13 | Some reverse | - |
-| 14 | Stringify numbers | - |
+| 1 | Captialize first | O(2^n |
+| 2 | Captialize words | O(2^n |
+| 3 | Collect odds | O(2^n |
+| 4 | Collect strings | O(2^n |
+| 5 | Factorial | O(2^n |
+| 6 | Flatten write | O(2^n |
+| 7 | Is palindrome  | O(2^n |
+| 8 | Nested even sum | O(2^n |
+| 9 | Power | O(2^n |
+| 10 | Product array | O(2^n |
+| 11 | Recursive range | O(2^n |
+| 12 | Reverse | O(2^n |
+| 13 | Some reverse | O(2^n |
+| 14 | Stringify numbers | O(2^n |

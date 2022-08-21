@@ -24,6 +24,4 @@ function sameFrequency(num1,num2){
     }
     return true;    
 }
-// console.log('sameFrequency(182,281)', sameFrequency(182,281)) // true
-// console.log('sameFrequency(32,13)', sameFrequency(32,13)) // false
 module.exports.sameFrequency = sameFrequency

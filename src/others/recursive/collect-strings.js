@@ -31,5 +31,5 @@ function collectStringsPureRecursive(obj) {
  
     return stringsArr;
 }
-console.log('collectStrings',collectStrings({ name: 'raj',data:{ call:'22' , jam: 'jam' } , phone : 'phone'}))
+// console.log('collectStrings',collectStrings({ name: 'raj',data:{ call:'22' , jam: 'jam' } , phone : 'phone'}))
 module.exports = { collectStrings , collectStringsPureRecursive };
