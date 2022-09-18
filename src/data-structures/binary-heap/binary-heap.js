@@ -84,7 +84,7 @@
 // heap.insert(27);
 // heap.insert(12);
 // heap.insert(55);
-// console.log('head',heap.values)
+// console.log('head',heap.values)// [55, 39, 41, 18, 27, 12, 33]
 // heap.extractMax();
-// console.log('head',heap.values)
+// console.log('head',heap.values) // [41, 39, 33, 18, 27, 12]
 module.exports.BinaryHeap = BinaryHeap;
